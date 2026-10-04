@@ -1,0 +1,66 @@
+{
+    "_id": null,
+    "_nombre": "10465785531-03-B001-00007073",
+    "_generado": "2026-09-29 08:31:21",
+    "_ambiente": "beta",
+    "emisor": {
+        "ruc": "10465785531",
+        "razon_social": "DICK MARLON TAMANI ROMAYNA",
+        "direccion": "PSJE. 7 DE JUNIO NRO 303",
+        "ubigeo": "150101"
+    },
+    "cliente": {
+        "razon_social": "DICK MARLON TAMANI ROMAYNA",
+        "numero_doc": "46578553",
+        "tipo_doc": "1",
+        "direccion": "PSJE 7 DE JUNIO"
+    },
+    "comprobante": {
+        "tipo_doc": "03",
+        "serie": "B001",
+        "correlativo": 7073,
+        "fecha_emision": "2026-09-26",
+        "moneda": "PEN",
+        "condicion_pago": "CONTADO",
+        "observaciones": "",
+        "documento_referencia": "",
+        "nota_motivo": "",
+        "nota_sustento": ""
+    },
+    "totales": {
+        "subtotal_gravado": 0,
+        "subtotal_exonerado": 5,
+        "subtotal_inafecto": 0,
+        "subtotal_gratuito": 0,
+        "descuento_global": 0,
+        "igv_total": 0,
+        "total": 5,
+        "igv_porcentaje": 18
+    },
+    "items": [
+        {
+            "descripcion": "BUSCAPINA COMPOSITUM N 10 mg + 500 mg x 100 Comp. Recubierto",
+            "codigo_producto": "",
+            "unidad_medida": "NIU",
+            "cantidad": 1,
+            "precio_unitario": 2.5,
+            "precio_con_igv": 2.5,
+            "igv_tipo": "20",
+            "valor_venta": 2.5,
+            "igv_monto": 0,
+            "total_item": 0
+        },
+        {
+            "descripcion": "SUPRACALM 1 Gr X 10 Comprimidos",
+            "codigo_producto": "",
+            "unidad_medida": "NIU",
+            "cantidad": 1,
+            "precio_unitario": 2.5,
+            "precio_con_igv": 2.5,
+            "igv_tipo": "20",
+            "valor_venta": 2.5,
+            "igv_monto": 0,
+            "total_item": 0
+        }
+    ]
+}

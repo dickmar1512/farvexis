@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+  xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+  xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ext:UBLExtensions><ext:UBLExtension><ext:ExtensionContent/></ext:UBLExtension></ext:UBLExtensions>
+  <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+  <cbc:CustomizationID>2.0</cbc:CustomizationID>
+  <cbc:ID>B001-00007066</cbc:ID>
+  <cbc:IssueDate>2026-09-17</cbc:IssueDate>
+  <cbc:IssueTime>22:23:29</cbc:IssueTime>
+  <cbc:InvoiceTypeCode listID="0101">03</cbc:InvoiceTypeCode>
+  <cbc:Note languageLocaleID="1000"><![CDATA[SON: DOS Y 50/100 SOLES]]></cbc:Note>
+  <cbc:DocumentCurrencyCode>PEN</cbc:DocumentCurrencyCode>
+  <cac:Signature>
+    <cbc:ID>SignatureSP</cbc:ID>
+    <cac:SignatoryParty><cac:PartyIdentification>
+      <cbc:ID>10465785531</cbc:ID>
+    </cac:PartyIdentification><cac:PartyName>
+      <cbc:Name><![CDATA[DICK MARLON TAMANI ROMAYNA]]></cbc:Name>
+    </cac:PartyName></cac:SignatoryParty>
+    <cac:DigitalSignatureAttachment><cac:ExternalReference>
+      <cbc:URI>#SignatureSP</cbc:URI>
+    </cac:ExternalReference></cac:DigitalSignatureAttachment>
+  </cac:Signature>
+  <cac:AccountingSupplierParty><cac:Party>
+    <cac:PartyIdentification><cbc:ID schemeID="6">10465785531</cbc:ID></cac:PartyIdentification>
+    <cac:PartyLegalEntity>
+      <cbc:RegistrationName><![CDATA[DICK MARLON TAMANI ROMAYNA]]></cbc:RegistrationName>
+      <cac:RegistrationAddress>
+        <cbc:ID>150101</cbc:ID>
+        <cbc:AddressTypeCode>0000</cbc:AddressTypeCode>
+        <cac:AddressLine><cbc:Line><![CDATA[PSJE. 7 DE JUNIO NRO 303]]></cbc:Line></cac:AddressLine>
+        <cac:Country><cbc:IdentificationCode>PE</cbc:IdentificationCode></cac:Country>
+      </cac:RegistrationAddress>
+    </cac:PartyLegalEntity>
+  </cac:Party></cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty><cac:Party>
+    <cac:PartyIdentification><cbc:ID schemeID="1">00000000</cbc:ID></cac:PartyIdentification>
+    <cac:PartyLegalEntity><cbc:RegistrationName><![CDATA[CLIENTES VARIOS]]></cbc:RegistrationName></cac:PartyLegalEntity>
+  </cac:Party></cac:AccountingCustomerParty>
+  <cac:PaymentTerms><cbc:ID>FormaPago</cbc:ID>
+    <cbc:PaymentMeansID>Contado</cbc:PaymentMeansID>
+  </cac:PaymentTerms>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="PEN">0.38</cbc:TaxAmount>
+    <cac:TaxSubtotal><cbc:TaxableAmount currencyID="PEN">2.12</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="PEN">0.38</cbc:TaxAmount>
+      <cac:TaxCategory><cbc:ID>S</cbc:ID>
+        <cbc:Percent>18</cbc:Percent>
+        <cac:TaxScheme><cbc:ID>1000</cbc:ID><cbc:Name>IGV</cbc:Name><cbc:TaxTypeCode>VAT</cbc:TaxTypeCode></cac:TaxScheme>
+      </cac:TaxCategory></cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="PEN">2.12</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="PEN">2.12</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="PEN">2.50</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="PEN">2.50</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine><cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="NIU">1.000</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="PEN">0.00</cbc:LineExtensionAmount>
+    <cac:PricingReference><cac:AlternativeConditionPrice>
+      <cbc:PriceAmount currencyID="PEN">0.00000000</cbc:PriceAmount>
+      <cbc:PriceTypeCode>01</cbc:PriceTypeCode>
+    </cac:AlternativeConditionPrice></cac:PricingReference>
+    <cac:TaxTotal><cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+      <cac:TaxSubtotal><cbc:TaxableAmount currencyID="PEN">0.00</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+        <cac:TaxCategory><cbc:ID>E</cbc:ID><cbc:Percent>0</cbc:Percent>
+          <cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT" listName="Afectacion del IGV" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">20</cbc:TaxExemptionReasonCode>
+          <cac:TaxScheme><cbc:ID>9997</cbc:ID><cbc:Name>EXO</cbc:Name><cbc:TaxTypeCode>VAT</cbc:TaxTypeCode></cac:TaxScheme>
+        </cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal>
+    <cac:Item><cbc:Description><![CDATA[SUPRACALM 1 Gr X 10 Comprimidos]]></cbc:Description></cac:Item>
+    <cac:Price><cbc:PriceAmount currencyID="PEN">0.0000</cbc:PriceAmount></cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine><cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="NIU">1.000</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="PEN">0.00</cbc:LineExtensionAmount>
+    <cac:PricingReference><cac:AlternativeConditionPrice>
+      <cbc:PriceAmount currencyID="PEN">0.00000000</cbc:PriceAmount>
+      <cbc:PriceTypeCode>01</cbc:PriceTypeCode>
+    </cac:AlternativeConditionPrice></cac:PricingReference>
+    <cac:TaxTotal><cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+      <cac:TaxSubtotal><cbc:TaxableAmount currencyID="PEN">0.00</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+        <cac:TaxCategory><cbc:ID>E</cbc:ID><cbc:Percent>0</cbc:Percent>
+          <cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT" listName="Afectacion del IGV" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">20</cbc:TaxExemptionReasonCode>
+          <cac:TaxScheme><cbc:ID>9997</cbc:ID><cbc:Name>EXO</cbc:Name><cbc:TaxTypeCode>VAT</cbc:TaxTypeCode></cac:TaxScheme>
+        </cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal>
+    <cac:Item><cbc:Description><![CDATA[SUPRACALM 1 Gr X 10 Comprimidos]]></cbc:Description></cac:Item>
+    <cac:Price><cbc:PriceAmount currencyID="PEN">0.0000</cbc:PriceAmount></cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine><cbc:ID>3</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="NIU">1.000</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="PEN">0.00</cbc:LineExtensionAmount>
+    <cac:PricingReference><cac:AlternativeConditionPrice>
+      <cbc:PriceAmount currencyID="PEN">0.00000000</cbc:PriceAmount>
+      <cbc:PriceTypeCode>01</cbc:PriceTypeCode>
+    </cac:AlternativeConditionPrice></cac:PricingReference>
+    <cac:TaxTotal><cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+      <cac:TaxSubtotal><cbc:TaxableAmount currencyID="PEN">0.00</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="PEN">0.00</cbc:TaxAmount>
+        <cac:TaxCategory><cbc:ID>E</cbc:ID><cbc:Percent>0</cbc:Percent>
+          <cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT" listName="Afectacion del IGV" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">20</cbc:TaxExemptionReasonCode>
+          <cac:TaxScheme><cbc:ID>9997</cbc:ID><cbc:Name>EXO</cbc:Name><cbc:TaxTypeCode>VAT</cbc:TaxTypeCode></cac:TaxScheme>
+        </cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal>
+    <cac:Item><cbc:Description><![CDATA[SUPRACALM 1 Gr X 10 Comprimidos]]></cbc:Description></cac:Item>
+    <cac:Price><cbc:PriceAmount currencyID="PEN">0.0000</cbc:PriceAmount></cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine><cbc:ID>4</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="NIU">1.000</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="PEN">2.12</cbc:LineExtensionAmount>
+    <cac:PricingReference><cac:AlternativeConditionPrice>
+      <cbc:PriceAmount currencyID="PEN">2.50000000</cbc:PriceAmount>
+      <cbc:PriceTypeCode>01</cbc:PriceTypeCode>
+    </cac:AlternativeConditionPrice></cac:PricingReference>
+    <cac:TaxTotal><cbc:TaxAmount currencyID="PEN">0.38</cbc:TaxAmount>
+      <cac:TaxSubtotal><cbc:TaxableAmount currencyID="PEN">2.12</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="PEN">0.38</cbc:TaxAmount>
+        <cac:TaxCategory><cbc:ID>S</cbc:ID><cbc:Percent>18</cbc:Percent>
+          <cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT" listName="Afectacion del IGV" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">10</cbc:TaxExemptionReasonCode>
+          <cac:TaxScheme><cbc:ID>1000</cbc:ID><cbc:Name>IGV</cbc:Name><cbc:TaxTypeCode>VAT</cbc:TaxTypeCode></cac:TaxScheme>
+        </cac:TaxCategory></cac:TaxSubtotal></cac:TaxTotal>
+    <cac:Item><cbc:Description><![CDATA[SUPRACALM 1 Gr X 10 Comprimidos]]></cbc:Description></cac:Item>
+    <cac:Price><cbc:PriceAmount currencyID="PEN">2.1186</cbc:PriceAmount></cac:Price>
+  </cac:InvoiceLine>
+</Invoice>

@@ -1,0 +1,10 @@
+.custom-swal-popup {
+    font-size: 12px; /* Tamaño de fuente para el popup */
+  }
+  .custom-swal-title {
+    font-size: 20px; /* Tamaño de fuente para el título */
+  }
+  
+  .custom-swal-content {
+    font-size: 14px; /* Tamaño de fuente para el contenido */
+  }  

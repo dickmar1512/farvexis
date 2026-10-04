@@ -1,0 +1,54 @@
+{
+    "_id": null,
+    "_nombre": "10465785531-03-B001-00007068",
+    "_generado": "2026-09-29 08:31:01",
+    "_ambiente": "beta",
+    "emisor": {
+        "ruc": "10465785531",
+        "razon_social": "DICK MARLON TAMANI ROMAYNA",
+        "direccion": "PSJE. 7 DE JUNIO NRO 303",
+        "ubigeo": "150101"
+    },
+    "cliente": {
+        "razon_social": "DICK MARLON TAMANI ROMAYNA",
+        "numero_doc": "46578553",
+        "tipo_doc": "1",
+        "direccion": "PSJE 7 DE JUNIO"
+    },
+    "comprobante": {
+        "tipo_doc": "03",
+        "serie": "B001",
+        "correlativo": 7068,
+        "fecha_emision": "2026-09-19",
+        "moneda": "PEN",
+        "condicion_pago": "CONTADO",
+        "observaciones": "",
+        "documento_referencia": "",
+        "nota_motivo": "",
+        "nota_sustento": ""
+    },
+    "totales": {
+        "subtotal_gravado": 5.93,
+        "subtotal_exonerado": 0,
+        "subtotal_inafecto": 0,
+        "subtotal_gratuito": 0,
+        "descuento_global": 0,
+        "igv_total": 1.07,
+        "total": 7,
+        "igv_porcentaje": 18
+    },
+    "items": [
+        {
+            "descripcion": "DEXAMETASONA 4MG\/2ML x 100 AMPOLLAS",
+            "codigo_producto": "",
+            "unidad_medida": "NIU",
+            "cantidad": 2,
+            "precio_unitario": 2.9661,
+            "precio_con_igv": 3.5,
+            "igv_tipo": "10",
+            "valor_venta": 5.93,
+            "igv_monto": 1.07,
+            "total_item": 0
+        }
+    ]
+}

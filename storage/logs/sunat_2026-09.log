@@ -1,0 +1,520 @@
+[2026-09-17 14:21:50] PARSE: 10432470330-03-B001-00099999.xml generado
+[2026-09-17 14:21:50] DATA: 10432470330-03-B001-00099999.json generado
+[2026-09-17 14:21:50] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 14:21:50] FIRMA: 10432470330-03-B001-00099999.xml firmado
+[2026-09-17 14:21:50] ENVIO: 10432470330-03-B001-00099999.zip creado
+[2026-09-17 14:21:50] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00099999.zip)
+[2026-09-17 14:21:50] SOAP: Respuesta extraída (largo: 0)
+[2026-09-17 14:21:50] REPO: 10432470330-03-B001-00099999.xml archivado
+[2026-09-17 14:52:34] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 15:12:20] PARSE: 10432470330-03-B001-00009999.xml generado
+[2026-09-17 15:12:20] DATA: 10432470330-03-B001-00009999.json generado
+[2026-09-17 15:12:20] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 15:12:20] FIRMA: 10432470330-03-B001-00009999.xml firmado
+[2026-09-17 15:12:20] ENVIO: 10432470330-03-B001-00009999.zip creado
+[2026-09-17 15:12:20] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00009999.zip)
+[2026-09-17 15:12:20] SOAP: Respuesta extraída (largo: 1780)
+[2026-09-17 15:12:20] RPTA [10432470330-03-B001-00009999]: Código=0 - La Boleta numero B001-00009999, ha sido aceptada
+[2026-09-17 15:12:20] REPO: 10432470330-03-B001-00009999.xml archivado
+[2026-09-17 10:25:10] PARSE: 10432470330-03-B001-00007065.xml generado
+[2026-09-17 10:25:10] DATA: 10432470330-03-B001-00007065.json generado
+[2026-09-17 10:25:10] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 10:25:10] FIRMA: 10432470330-03-B001-00007065.xml firmado
+[2026-09-17 10:25:10] ENVIO: 10432470330-03-B001-00007065.zip creado
+[2026-09-17 10:25:10] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007065.zip)
+[2026-09-17 10:25:10] SOAP: Respuesta extraída (largo: 0)
+[2026-09-17 10:25:10] REPO: 10432470330-03-B001-00007065.xml archivado
+[2026-09-17 10:26:21] PARSE: 10432470330-03-B001-00007065.xml generado
+[2026-09-17 10:26:21] DATA: 10432470330-03-B001-00007065.json generado
+[2026-09-17 10:26:21] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 10:26:21] FIRMA: 10432470330-03-B001-00007065.xml firmado
+[2026-09-17 10:26:21] ENVIO: 10432470330-03-B001-00007065.zip creado
+[2026-09-17 10:26:21] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007065.zip)
+[2026-09-17 10:26:21] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-17 10:26:21] RPTA [10432470330-03-B001-00007065]: Código=0 - La Boleta numero B001-00007065, ha sido aceptada
+[2026-09-17 10:26:21] REPO: 10432470330-03-B001-00007065.xml archivado
+[2026-09-17 10:30:33] PARSE: 10432470330-01-F001-00000014.xml generado
+[2026-09-17 10:30:33] DATA: 10432470330-01-F001-00000014.json generado
+[2026-09-17 10:30:33] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 10:30:33] FIRMA: 10432470330-01-F001-00000014.xml firmado
+[2026-09-17 10:30:33] ENVIO: 10432470330-01-F001-00000014.zip creado
+[2026-09-17 10:30:33] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-01-F001-00000014.zip)
+[2026-09-17 10:30:33] SOAP: Respuesta extraída (largo: 0)
+[2026-09-17 10:30:33] REPO: 10432470330-01-F001-00000014.xml archivado
+[2026-09-17 10:31:02] PARSE: 10432470330-01-F001-00000014.xml generado
+[2026-09-17 10:31:02] DATA: 10432470330-01-F001-00000014.json generado
+[2026-09-17 10:31:02] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-17 10:31:02] FIRMA: 10432470330-01-F001-00000014.xml firmado
+[2026-09-17 10:31:02] ENVIO: 10432470330-01-F001-00000014.zip creado
+[2026-09-17 10:31:02] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-01-F001-00000014.zip)
+[2026-09-17 10:31:02] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-17 10:31:02] RPTA [10432470330-01-F001-00000014]: Código=0 - La Factura numero F001-00000014, ha sido aceptada
+[2026-09-17 10:31:02] REPO: 10432470330-01-F001-00000014.xml archivado
+[2026-09-17 22:23:38] PARSE: 10432470330-03-B001-00007066.xml generado
+[2026-09-17 22:23:38] DATA: 10432470330-03-B001-00007066.json generado
+[2026-09-17 22:23:38] ADVERTENCIA: No se pudo leer el certificado PFX con la clave proporcionada
+[2026-09-17 22:23:38] FIRMA: 10432470330-03-B001-00007066.xml firmado
+[2026-09-17 22:23:38] ENVIO: 10432470330-03-B001-00007066.zip creado
+[2026-09-17 22:23:38] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007066.zip)
+[2026-09-17 22:23:38] ERROR [10432470330-03-B001-00007066]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: No signature in message!
+[2026-09-19 20:38:28] PARSE: 10432470330-03-B001-00007067.xml generado
+[2026-09-19 20:38:28] DATA: 10432470330-03-B001-00007067.json generado
+[2026-09-19 20:38:28] ADVERTENCIA: No se pudo leer el certificado PFX con la clave proporcionada
+[2026-09-19 20:38:28] FIRMA: 10432470330-03-B001-00007067.xml firmado
+[2026-09-19 20:38:28] ENVIO: 10432470330-03-B001-00007067.zip creado
+[2026-09-19 20:38:28] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007067.zip)
+[2026-09-19 20:38:28] ERROR [10432470330-03-B001-00007067]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: No signature in message!
+[2026-09-19 20:38:51] PARSE: 10432470330-03-B001-00007067.xml generado
+[2026-09-19 20:38:51] DATA: 10432470330-03-B001-00007067.json generado
+[2026-09-19 20:38:51] ADVERTENCIA: No se pudo leer el certificado PFX con la clave proporcionada
+[2026-09-19 20:38:51] FIRMA: 10432470330-03-B001-00007067.xml firmado
+[2026-09-19 20:38:51] ENVIO: 10432470330-03-B001-00007067.zip creado
+[2026-09-19 20:38:51] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007067.zip)
+[2026-09-19 20:38:51] ERROR [10432470330-03-B001-00007067]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: No signature in message!
+[2026-09-20 01:47:04] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-20 01:47:12] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-20 01:47:12] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007067.zip)
+[2026-09-20 01:47:12] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-20 01:47:12] RPTA [10432470330-03-B001-00007067]: Código=0 - La Boleta numero B001-00007067, ha sido aceptada
+[2026-09-20 01:49:52] PARSE: 10432470330-03-B001-00007068.xml generado
+[2026-09-20 01:49:52] DATA: 10432470330-03-B001-00007068.json generado
+[2026-09-20 01:49:52] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-20 01:49:52] FIRMA: 10432470330-03-B001-00007068.xml firmado
+[2026-09-20 01:49:52] ENVIO: 10432470330-03-B001-00007068.zip creado
+[2026-09-20 01:49:52] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007068.zip)
+[2026-09-20 01:49:52] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-20 01:49:52] RPTA [10432470330-03-B001-00007068]: Código=0 - La Boleta numero B001-00007068, ha sido aceptada
+[2026-09-20 01:49:52] REPO: 10432470330-03-B001-00007068.xml archivado
+[2026-09-19 22:39:34] PARSE: 10432470330-03-B001-00007068.xml generado
+[2026-09-19 22:39:34] DATA: 10432470330-03-B001-00007068.json generado
+[2026-09-19 22:39:34] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-19 22:39:34] FIRMA: 10432470330-03-B001-00007068.xml firmado
+[2026-09-19 22:39:34] ENVIO: 10432470330-03-B001-00007068.zip creado
+[2026-09-19 22:39:34] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007068.zip)
+[2026-09-19 22:39:35] SOAP: Respuesta extraída (largo: 1800)
+[2026-09-19 22:39:35] RPTA [10432470330-03-B001-00007068]: Código=0 - La Boleta numero B001-00007068, ha sido aceptada
+[2026-09-19 22:39:35] REPO: 10432470330-03-B001-00007068.xml archivado
+[2026-09-19 23:03:23] PARSE: 10432470330-03-B001-00007069.xml generado
+[2026-09-19 23:03:23] DATA: 10432470330-03-B001-00007069.json generado
+[2026-09-19 23:03:23] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-19 23:03:23] FIRMA: 10432470330-03-B001-00007069.xml firmado
+[2026-09-19 23:03:23] ENVIO: 10432470330-03-B001-00007069.zip creado
+[2026-09-19 23:03:23] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007069.zip)
+[2026-09-19 23:03:23] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-19 23:03:23] RPTA [10432470330-03-B001-00007069]: Código=0 - La Boleta numero B001-00007069, ha sido aceptada
+[2026-09-19 23:03:23] REPO: 10432470330-03-B001-00007069.xml archivado
+[2026-09-20 19:38:33] PARSE: 10432470330-03-B001-00007070.xml generado
+[2026-09-20 19:38:33] DATA: 10432470330-03-B001-00007070.json generado
+[2026-09-20 19:38:33] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-20 19:38:33] FIRMA: 10432470330-03-B001-00007070.xml firmado
+[2026-09-20 19:38:33] ENVIO: 10432470330-03-B001-00007070.zip creado
+[2026-09-20 19:38:33] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007070.zip)
+[2026-09-20 19:38:33] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-20 19:38:33] RPTA [10432470330-03-B001-00007070]: Código=0 - La Boleta numero B001-00007070, ha sido aceptada
+[2026-09-20 19:38:33] REPO: 10432470330-03-B001-00007070.xml archivado
+[2026-09-23 22:20:12] PARSE: 10432470330-03-B001-00007071.xml generado
+[2026-09-23 22:20:12] DATA: 10432470330-03-B001-00007071.json generado
+[2026-09-23 22:20:12] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-23 22:20:12] FIRMA: 10432470330-03-B001-00007071.xml firmado
+[2026-09-23 22:20:12] ENVIO: 10432470330-03-B001-00007071.zip creado
+[2026-09-23 22:20:12] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007071.zip)
+[2026-09-23 22:20:12] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-23 22:20:12] RPTA [10432470330-03-B001-00007071]: Código=0 - La Boleta numero B001-00007071, ha sido aceptada
+[2026-09-23 22:20:12] REPO: 10432470330-03-B001-00007071.xml archivado
+[2026-09-23 22:43:46] PARSE: 10432470330-03-B001-00007072.xml generado
+[2026-09-23 22:43:46] DATA: 10432470330-03-B001-00007072.json generado
+[2026-09-23 22:43:46] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-23 22:43:46] FIRMA: 10432470330-03-B001-00007072.xml firmado
+[2026-09-23 22:43:46] ENVIO: 10432470330-03-B001-00007072.zip creado
+[2026-09-23 22:43:46] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007072.zip)
+[2026-09-23 22:43:46] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-23 22:43:46] RPTA [10432470330-03-B001-00007072]: Código=0 - La Boleta numero B001-00007072, ha sido aceptada
+[2026-09-23 22:43:46] REPO: 10432470330-03-B001-00007072.xml archivado
+[2026-09-24 00:24:35] PARSE: 10432470330-01-F001-00000015.xml generado
+[2026-09-24 00:24:35] DATA: 10432470330-01-F001-00000015.json generado
+[2026-09-24 00:24:35] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-24 00:24:35] FIRMA: 10432470330-01-F001-00000015.xml firmado
+[2026-09-24 00:24:35] ENVIO: 10432470330-01-F001-00000015.zip creado
+[2026-09-24 00:24:35] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-01-F001-00000015.zip)
+[2026-09-24 00:24:35] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-24 00:24:35] RPTA [10432470330-01-F001-00000015]: Código=0 - La Factura numero F001-00000015, ha sido aceptada
+[2026-09-24 00:24:35] REPO: 10432470330-01-F001-00000015.xml archivado
+[2026-09-24 11:25:29] PARSE: 10432470330-03-B001-00007066.xml generado
+[2026-09-24 11:25:29] DATA: 10432470330-03-B001-00007066.json generado
+[2026-09-24 11:25:29] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-24 11:25:29] FIRMA: 10432470330-03-B001-00007066.xml firmado
+[2026-09-24 11:25:29] ENVIO: 10432470330-03-B001-00007066.zip creado
+[2026-09-24 11:25:29] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00007066.zip)
+[2026-09-24 11:25:29] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-24 11:25:29] RPTA [10432470330-03-B001-00007066]: Código=0 - La Boleta numero B001-00007066, ha sido aceptada
+[2026-09-24 11:25:29] REPO: 10432470330-03-B001-00007066.xml archivado
+[2026-09-24 20:48:51] PARSE: 10432470330-07-BNC1-00000016.xml generado
+[2026-09-24 20:48:51] DATA: 10432470330-07-BNC1-00000016.json generado
+[2026-09-24 20:48:51] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-24 20:48:51] FIRMA: 10432470330-07-BNC1-00000016.xml firmado
+[2026-09-24 20:48:51] ENVIO: 10432470330-07-BNC1-00000016.zip creado
+[2026-09-24 20:48:51] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-07-BNC1-00000016.zip)
+[2026-09-24 20:48:52] SOAP: Respuesta extraída (largo: 0)
+[2026-09-24 20:48:52] REPO: 10432470330-07-BNC1-00000016.xml archivado
+[2026-09-24 20:48:52] PARSE: 10432470330-07-BNC1-00000016.xml generado
+[2026-09-24 20:48:52] DATA: 10432470330-07-BNC1-00000016.json generado
+[2026-09-24 20:48:52] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-24 20:48:52] FIRMA: 10432470330-07-BNC1-00000016.xml firmado
+[2026-09-24 20:48:52] ENVIO: 10432470330-07-BNC1-00000016.zip creado
+[2026-09-24 20:48:52] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-07-BNC1-00000016.zip)
+[2026-09-24 20:48:52] SOAP: Respuesta extraída (largo: 0)
+[2026-09-24 20:48:52] REPO: 10432470330-07-BNC1-00000016.xml archivado
+[2026-09-24 20:53:22] PARSE: 10432470330-07-BNC1-00000018.xml generado
+[2026-09-24 20:53:22] DATA: 10432470330-07-BNC1-00000018.json generado
+[2026-09-24 20:53:22] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-24 20:53:22] FIRMA: 10432470330-07-BNC1-00000018.xml firmado
+[2026-09-24 20:53:22] ENVIO: 10432470330-07-BNC1-00000018.zip creado
+[2026-09-24 20:53:22] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-07-BNC1-00000018.zip)
+[2026-09-24 20:53:22] SOAP: Respuesta extraída (largo: 0)
+[2026-09-24 20:53:22] REPO: 10432470330-07-BNC1-00000018.xml archivado
+[2026-09-24 20:53:22] PARSE: 10432470330-07-BNC1-00000018.xml generado
+[2026-09-24 20:53:22] DATA: 10432470330-07-BNC1-00000018.json generado
+[2026-09-24 20:53:22] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-24 20:53:22] FIRMA: 10432470330-07-BNC1-00000018.xml firmado
+[2026-09-24 20:53:22] ENVIO: 10432470330-07-BNC1-00000018.zip creado
+[2026-09-24 20:53:22] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-07-BNC1-00000018.zip)
+[2026-09-24 20:53:22] ERROR [10432470330-07-BNC1-00000018]: SUNAT HTTP 401: <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>nginx/1.17.3</center>
+</body>
+</html>
+
+[2026-09-25 00:23:52] PARSE: 10465785531-07-FNC1-00000012.xml generado
+[2026-09-25 00:23:52] DATA: 10465785531-07-FNC1-00000012.json generado
+[2026-09-25 00:23:52] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-25 00:23:52] FIRMA: 10465785531-07-FNC1-00000012.xml firmado
+[2026-09-25 00:23:52] ENVIO: 10465785531-07-FNC1-00000012.zip creado
+[2026-09-25 00:23:52] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000012.zip)
+[2026-09-25 00:23:52] SOAP: Respuesta extraída (largo: 0)
+[2026-09-25 00:23:52] REPO: 10465785531-07-FNC1-00000012.xml archivado
+[2026-09-25 00:23:52] PARSE: 10465785531-07-FNC1-00000013.xml generado
+[2026-09-25 00:23:52] DATA: 10465785531-07-FNC1-00000013.json generado
+[2026-09-25 00:23:52] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-25 00:23:52] FIRMA: 10465785531-07-FNC1-00000013.xml firmado
+[2026-09-25 00:23:52] ENVIO: 10465785531-07-FNC1-00000013.zip creado
+[2026-09-25 00:23:52] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000013.zip)
+[2026-09-25 00:23:52] SOAP: Respuesta extraída (largo: 0)
+[2026-09-25 00:23:52] REPO: 10465785531-07-FNC1-00000013.xml archivado
+[2026-09-25 23:34:12] PARSE: 10465785531-07-BNC1-00000020.xml generado
+[2026-09-25 23:34:12] DATA: 10465785531-07-BNC1-00000020.json generado
+[2026-09-25 23:34:12] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-25 23:34:12] FIRMA: 10465785531-07-BNC1-00000020.xml firmado
+[2026-09-25 23:34:12] ENVIO: 10465785531-07-BNC1-00000020.zip creado
+[2026-09-25 23:34:12] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000020.zip)
+[2026-09-25 23:34:12] SOAP: Respuesta extraída (largo: 1792)
+[2026-09-25 23:34:12] RPTA [10465785531-07-BNC1-00000020]: Código=0 - La Nota de Credito numero BNC1-00000020, ha sido aceptada
+[2026-09-25 23:34:12] REPO: 10465785531-07-BNC1-00000020.xml archivado
+[2026-09-25 23:34:12] PARSE: 10465785531-07-BNC1-00000021.xml generado
+[2026-09-25 23:34:12] DATA: 10465785531-07-BNC1-00000021.json generado
+[2026-09-25 23:34:12] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-25 23:34:12] FIRMA: 10465785531-07-BNC1-00000021.xml firmado
+[2026-09-25 23:34:12] ENVIO: 10465785531-07-BNC1-00000021.zip creado
+[2026-09-25 23:34:12] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000021.zip)
+[2026-09-25 23:34:12] SOAP: Respuesta extraída (largo: 1796)
+[2026-09-25 23:34:12] RPTA [10465785531-07-BNC1-00000021]: Código=0 - La Nota de Credito numero BNC1-00000021, ha sido aceptada
+[2026-09-25 23:34:12] REPO: 10465785531-07-BNC1-00000021.xml archivado
+[2026-09-26 00:38:20] PARSE: 10465785531-07-BNC1-00000016.xml generado
+[2026-09-26 00:38:20] DATA: 10465785531-07-BNC1-00000016.json generado
+[2026-09-26 00:38:20] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-26 00:38:20] FIRMA: 10465785531-07-BNC1-00000016.xml firmado
+[2026-09-26 00:38:20] ENVIO: 10465785531-07-BNC1-00000016.zip creado
+[2026-09-26 00:38:20] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000016.zip)
+[2026-09-26 00:38:20] SOAP: Respuesta extraída (largo: 0)
+[2026-09-26 00:38:20] REPO: 10465785531-07-BNC1-00000016.xml archivado
+[2026-09-26 00:38:27] PARSE: 10465785531-07-BNC1-00000016.xml generado
+[2026-09-26 00:38:27] DATA: 10465785531-07-BNC1-00000016.json generado
+[2026-09-26 00:38:27] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-26 00:38:27] FIRMA: 10465785531-07-BNC1-00000016.xml firmado
+[2026-09-26 00:38:27] ENVIO: 10465785531-07-BNC1-00000016.zip creado
+[2026-09-26 00:38:27] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000016.zip)
+[2026-09-26 00:38:28] SOAP: Respuesta extraída (largo: 0)
+[2026-09-26 00:38:28] REPO: 10465785531-07-BNC1-00000016.xml archivado
+[2026-09-26 01:06:07] PARSE: 10465785531-03-B001-00007074.xml generado
+[2026-09-26 01:06:07] DATA: 10465785531-03-B001-00007074.json generado
+[2026-09-26 01:06:07] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-26 01:06:07] FIRMA: 10465785531-03-B001-00007074.xml firmado
+[2026-09-26 01:06:07] ENVIO: 10465785531-03-B001-00007074.zip creado
+[2026-09-26 01:06:07] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007074.zip)
+[2026-09-26 01:06:07] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-26 01:06:07] RPTA [10465785531-03-B001-00007074]: Código=0 - La Boleta numero B001-00007074, ha sido aceptada
+[2026-09-26 01:06:07] REPO: 10465785531-03-B001-00007074.xml archivado
+[2026-09-26 01:06:11] PARSE: 10465785531-03-B001-00007073.xml generado
+[2026-09-26 01:06:11] DATA: 10465785531-03-B001-00007073.json generado
+[2026-09-26 01:06:11] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-26 01:06:11] FIRMA: 10465785531-03-B001-00007073.xml firmado
+[2026-09-26 01:06:11] ENVIO: 10465785531-03-B001-00007073.zip creado
+[2026-09-26 01:06:11] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007073.zip)
+[2026-09-26 01:06:11] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-26 01:06:11] RPTA [10465785531-03-B001-00007073]: Código=0 - La Boleta numero B001-00007073, ha sido aceptada
+[2026-09-26 01:06:11] REPO: 10465785531-03-B001-00007073.xml archivado
+[2026-09-28 23:37:25] PARSE: 10465785531-07-BNC1-00000016.xml generado
+[2026-09-28 23:37:25] DATA: 10465785531-07-BNC1-00000016.json generado
+[2026-09-28 23:37:25] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:37:25] FIRMA: 10465785531-07-BNC1-00000016.xml firmado
+[2026-09-28 23:37:25] ENVIO: 10465785531-07-BNC1-00000016.zip creado
+[2026-09-28 23:37:25] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000016.zip)
+[2026-09-28 23:37:25] SOAP: Respuesta extraída (largo: 0)
+[2026-09-28 23:37:25] REPO: 10465785531-07-BNC1-00000016.xml archivado
+[2026-09-28 23:37:32] PARSE: 10465785531-07-BNC1-00000016.xml generado
+[2026-09-28 23:37:32] DATA: 10465785531-07-BNC1-00000016.json generado
+[2026-09-28 23:37:32] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:37:32] FIRMA: 10465785531-07-BNC1-00000016.xml firmado
+[2026-09-28 23:37:32] ENVIO: 10465785531-07-BNC1-00000016.zip creado
+[2026-09-28 23:37:32] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000016.zip)
+[2026-09-28 23:37:32] SOAP: Respuesta extraída (largo: 0)
+[2026-09-28 23:37:32] REPO: 10465785531-07-BNC1-00000016.xml archivado
+[2026-09-28 23:44:18] PARSE: 10465785531-07-BNC1-00000016.xml generado
+[2026-09-28 23:44:18] DATA: 10465785531-07-BNC1-00000016.json generado
+[2026-09-28 23:44:18] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:44:18] FIRMA: 10465785531-07-BNC1-00000016.xml firmado
+[2026-09-28 23:44:18] ENVIO: 10465785531-07-BNC1-00000016.zip creado
+[2026-09-28 23:44:18] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000016.zip)
+[2026-09-28 23:44:18] SOAP: Respuesta extraída (largo: 1948)
+[2026-09-28 23:44:18] RPTA [10465785531-07-BNC1-00000016]: Código=0 - La Nota de Credito numero BNC1-00000016, ha sido aceptada
+[2026-09-28 23:44:18] REPO: 10465785531-07-BNC1-00000016.xml archivado
+[2026-09-28 23:44:54] PARSE: 10465785531-07-FNC1-00000013.xml generado
+[2026-09-28 23:44:54] DATA: 10465785531-07-FNC1-00000013.json generado
+[2026-09-28 23:44:54] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:44:54] FIRMA: 10465785531-07-FNC1-00000013.xml firmado
+[2026-09-28 23:44:54] ENVIO: 10465785531-07-FNC1-00000013.zip creado
+[2026-09-28 23:44:54] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000013.zip)
+[2026-09-28 23:44:55] ERROR [10465785531-07-FNC1-00000013]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-28 23:45:25] PARSE: 10465785531-07-FNC1-00000013.xml generado
+[2026-09-28 23:45:25] DATA: 10465785531-07-FNC1-00000013.json generado
+[2026-09-28 23:45:25] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:45:25] FIRMA: 10465785531-07-FNC1-00000013.xml firmado
+[2026-09-28 23:45:25] ENVIO: 10465785531-07-FNC1-00000013.zip creado
+[2026-09-28 23:45:25] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000013.zip)
+[2026-09-28 23:45:25] ERROR [10465785531-07-FNC1-00000013]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-28 23:47:27] PARSE: 10465785531-07-FNC1-00000013.xml generado
+[2026-09-28 23:47:27] DATA: 10465785531-07-FNC1-00000013.json generado
+[2026-09-28 23:47:27] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:47:27] FIRMA: 10465785531-07-FNC1-00000013.xml firmado
+[2026-09-28 23:47:27] ENVIO: 10465785531-07-FNC1-00000013.zip creado
+[2026-09-28 23:47:27] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000013.zip)
+[2026-09-28 23:47:27] ERROR [10465785531-07-FNC1-00000013]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-28 23:47:38] PARSE: 10465785531-07-FNC1-00000012.xml generado
+[2026-09-28 23:47:38] DATA: 10465785531-07-FNC1-00000012.json generado
+[2026-09-28 23:47:38] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:47:38] FIRMA: 10465785531-07-FNC1-00000012.xml firmado
+[2026-09-28 23:47:38] ENVIO: 10465785531-07-FNC1-00000012.zip creado
+[2026-09-28 23:47:38] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000012.zip)
+[2026-09-28 23:47:38] ERROR [10465785531-07-FNC1-00000012]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-28 23:47:48] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-28 23:47:48] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-28 23:47:48] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:47:48] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-28 23:47:48] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-28 23:47:48] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-28 23:47:48] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-28 23:53:32] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-28 23:53:32] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-28 23:53:32] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:53:32] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-28 23:53:32] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-28 23:53:32] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-28 23:53:32] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-28 23:54:55] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-28 23:54:55] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-28 23:54:55] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-28 23:54:55] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-28 23:54:55] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-28 23:54:55] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-28 23:54:55] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 00:04:10] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-29 00:04:10] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-29 00:04:10] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 00:04:10] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-29 00:04:10] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-29 00:04:10] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-29 00:04:10] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 00:04:27] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-29 00:04:27] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-29 00:04:27] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 00:04:27] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-29 00:04:27] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-29 00:04:27] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-29 00:04:27] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 00:07:46] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-29 00:07:46] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-29 00:07:46] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 00:07:46] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-29 00:07:46] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-29 00:07:46] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-29 00:07:46] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 00:58:05] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-29 00:58:05] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-29 00:58:05] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 00:58:05] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-29 00:58:05] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-29 00:58:05] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-29 00:58:05] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 00:58:15] PARSE: 10465785531-07-BNC1-00000018.xml generado
+[2026-09-29 00:58:15] DATA: 10465785531-07-BNC1-00000018.json generado
+[2026-09-29 00:58:15] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 00:58:15] FIRMA: 10465785531-07-BNC1-00000018.xml firmado
+[2026-09-29 00:58:15] ENVIO: 10465785531-07-BNC1-00000018.zip creado
+[2026-09-29 00:58:15] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-BNC1-00000018.zip)
+[2026-09-29 00:58:15] ERROR [10465785531-07-BNC1-00000018]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 01:22:41] PARSE: 10465785531-07-FNC1-00000012.xml generado
+[2026-09-29 01:22:41] DATA: 10465785531-07-FNC1-00000012.json generado
+[2026-09-29 01:22:41] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 01:22:41] FIRMA: 10465785531-07-FNC1-00000012.xml firmado
+[2026-09-29 01:22:41] ENVIO: 10465785531-07-FNC1-00000012.zip creado
+[2026-09-29 01:22:41] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000012.zip)
+[2026-09-29 01:22:41] ERROR [10465785531-07-FNC1-00000012]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 01:22:48] PARSE: 10465785531-07-FNC1-00000012.xml generado
+[2026-09-29 01:22:48] DATA: 10465785531-07-FNC1-00000012.json generado
+[2026-09-29 01:22:48] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 01:22:48] FIRMA: 10465785531-07-FNC1-00000012.xml firmado
+[2026-09-29 01:22:48] ENVIO: 10465785531-07-FNC1-00000012.zip creado
+[2026-09-29 01:22:48] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-07-FNC1-00000012.zip)
+[2026-09-29 01:22:48] ERROR [10465785531-07-FNC1-00000012]: SUNAT SoapFault [500]: No se puede leer (parsear) el archivo XML - Detalle: http://xxx.xxx.xxx/ol-ti-itcpfegem-beta/billService: cvc-particle 2.1: in element {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNote of type {urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2}CreditNoteType, found &lt;/CreditNote> (in namespace urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2), but next item should be {urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2}CreditNoteLine
+[2026-09-29 08:25:09] PARSE: 10465785531-03-B001-00007075.xml generado
+[2026-09-29 08:25:09] DATA: 10465785531-03-B001-00007075.json generado
+[2026-09-29 08:25:09] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:25:09] FIRMA: 10465785531-03-B001-00007075.xml firmado
+[2026-09-29 08:25:09] ENVIO: 10465785531-03-B001-00007075.zip creado
+[2026-09-29 08:25:09] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007075.zip)
+[2026-09-29 08:25:09] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-29 08:25:09] RPTA [10465785531-03-B001-00007075]: Código=0 - La Boleta numero B001-00007075, ha sido aceptada
+[2026-09-29 08:25:09] REPO: 10465785531-03-B001-00007075.xml archivado
+[2026-09-29 08:31:01] PARSE: 10465785531-03-B001-00007068.xml generado
+[2026-09-29 08:31:01] DATA: 10465785531-03-B001-00007068.json generado
+[2026-09-29 08:31:01] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:01] FIRMA: 10465785531-03-B001-00007068.xml firmado
+[2026-09-29 08:31:01] ENVIO: 10465785531-03-B001-00007068.zip creado
+[2026-09-29 08:31:01] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007068.zip)
+[2026-09-29 08:31:01] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-29 08:31:01] RPTA [10465785531-03-B001-00007068]: Código=0 - La Boleta numero B001-00007068, ha sido aceptada
+[2026-09-29 08:31:01] REPO: 10465785531-03-B001-00007068.xml archivado
+[2026-09-29 08:31:04] PARSE: 10465785531-03-B001-00007069.xml generado
+[2026-09-29 08:31:04] DATA: 10465785531-03-B001-00007069.json generado
+[2026-09-29 08:31:04] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:04] FIRMA: 10465785531-03-B001-00007069.xml firmado
+[2026-09-29 08:31:04] ENVIO: 10465785531-03-B001-00007069.zip creado
+[2026-09-29 08:31:04] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007069.zip)
+[2026-09-29 08:31:04] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-29 08:31:04] RPTA [10465785531-03-B001-00007069]: Código=0 - La Boleta numero B001-00007069, ha sido aceptada
+[2026-09-29 08:31:04] REPO: 10465785531-03-B001-00007069.xml archivado
+[2026-09-29 08:31:08] PARSE: 10465785531-03-B001-00007070.xml generado
+[2026-09-29 08:31:08] DATA: 10465785531-03-B001-00007070.json generado
+[2026-09-29 08:31:08] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:08] FIRMA: 10465785531-03-B001-00007070.xml firmado
+[2026-09-29 08:31:08] ENVIO: 10465785531-03-B001-00007070.zip creado
+[2026-09-29 08:31:08] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007070.zip)
+[2026-09-29 08:31:08] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-29 08:31:08] RPTA [10465785531-03-B001-00007070]: Código=0 - La Boleta numero B001-00007070, ha sido aceptada
+[2026-09-29 08:31:08] REPO: 10465785531-03-B001-00007070.xml archivado
+[2026-09-29 08:31:11] PARSE: 10465785531-03-B001-00007071.xml generado
+[2026-09-29 08:31:11] DATA: 10465785531-03-B001-00007071.json generado
+[2026-09-29 08:31:11] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:11] FIRMA: 10465785531-03-B001-00007071.xml firmado
+[2026-09-29 08:31:11] ENVIO: 10465785531-03-B001-00007071.zip creado
+[2026-09-29 08:31:11] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007071.zip)
+[2026-09-29 08:31:11] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-29 08:31:11] RPTA [10465785531-03-B001-00007071]: Código=0 - La Boleta numero B001-00007071, ha sido aceptada
+[2026-09-29 08:31:11] REPO: 10465785531-03-B001-00007071.xml archivado
+[2026-09-29 08:31:15] PARSE: 10465785531-03-B001-00007072.xml generado
+[2026-09-29 08:31:15] DATA: 10465785531-03-B001-00007072.json generado
+[2026-09-29 08:31:15] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:15] FIRMA: 10465785531-03-B001-00007072.xml firmado
+[2026-09-29 08:31:15] ENVIO: 10465785531-03-B001-00007072.zip creado
+[2026-09-29 08:31:15] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007072.zip)
+[2026-09-29 08:31:15] SOAP: Respuesta extraída (largo: 1788)
+[2026-09-29 08:31:15] RPTA [10465785531-03-B001-00007072]: Código=0 - La Boleta numero B001-00007072, ha sido aceptada
+[2026-09-29 08:31:15] REPO: 10465785531-03-B001-00007072.xml archivado
+[2026-09-29 08:31:18] PARSE: 10465785531-01-F001-00000015.xml generado
+[2026-09-29 08:31:18] DATA: 10465785531-01-F001-00000015.json generado
+[2026-09-29 08:31:18] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:18] FIRMA: 10465785531-01-F001-00000015.xml firmado
+[2026-09-29 08:31:18] ENVIO: 10465785531-01-F001-00000015.zip creado
+[2026-09-29 08:31:18] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-01-F001-00000015.zip)
+[2026-09-29 08:31:18] SOAP: Respuesta extraída (largo: 1776)
+[2026-09-29 08:31:18] RPTA [10465785531-01-F001-00000015]: Código=0 - La Factura numero F001-00000015, ha sido aceptada
+[2026-09-29 08:31:18] REPO: 10465785531-01-F001-00000015.xml archivado
+[2026-09-29 08:31:21] PARSE: 10465785531-03-B001-00007073.xml generado
+[2026-09-29 08:31:21] DATA: 10465785531-03-B001-00007073.json generado
+[2026-09-29 08:31:21] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:21] FIRMA: 10465785531-03-B001-00007073.xml firmado
+[2026-09-29 08:31:21] ENVIO: 10465785531-03-B001-00007073.zip creado
+[2026-09-29 08:31:21] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007073.zip)
+[2026-09-29 08:31:21] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-29 08:31:21] RPTA [10465785531-03-B001-00007073]: Código=0 - La Boleta numero B001-00007073, ha sido aceptada
+[2026-09-29 08:31:21] REPO: 10465785531-03-B001-00007073.xml archivado
+[2026-09-29 08:31:25] PARSE: 10465785531-03-B001-00007074.xml generado
+[2026-09-29 08:31:25] DATA: 10465785531-03-B001-00007074.json generado
+[2026-09-29 08:31:25] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:31:25] FIRMA: 10465785531-03-B001-00007074.xml firmado
+[2026-09-29 08:31:25] ENVIO: 10465785531-03-B001-00007074.zip creado
+[2026-09-29 08:31:25] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007074.zip)
+[2026-09-29 08:31:25] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-29 08:31:25] RPTA [10465785531-03-B001-00007074]: Código=0 - La Boleta numero B001-00007074, ha sido aceptada
+[2026-09-29 08:31:25] REPO: 10465785531-03-B001-00007074.xml archivado
+[2026-09-29 08:53:59] PARSE: 10465785531-03-B001-00004632.xml generado
+[2026-09-29 08:53:59] DATA: 10465785531-03-B001-00004632.json generado
+[2026-09-29 08:53:59] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:53:59] FIRMA: 10465785531-03-B001-00004632.xml firmado
+[2026-09-29 08:53:59] ENVIO: 10465785531-03-B001-00004632.zip creado
+[2026-09-29 08:53:59] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00004632.zip)
+[2026-09-29 08:53:59] SOAP: Respuesta extraída (largo: 1784)
+[2026-09-29 08:53:59] RPTA [10465785531-03-B001-00004632]: Código=0 - La Boleta numero B001-00004632, ha sido aceptada
+[2026-09-29 08:53:59] REPO: 10465785531-03-B001-00004632.xml archivado
+[2026-09-29 08:54:24] PARSE: 10465785531-03-B001-00007076.xml generado
+[2026-09-29 08:54:24] DATA: 10465785531-03-B001-00007076.json generado
+[2026-09-29 08:54:24] FIRMA: XML firmado exitosamente con RSA-SHA256
+[2026-09-29 08:54:24] FIRMA: 10465785531-03-B001-00007076.xml firmado
+[2026-09-29 08:54:24] ENVIO: 10465785531-03-B001-00007076.zip creado
+[2026-09-29 08:54:24] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007076.zip)
+[2026-09-29 08:54:24] SOAP: Respuesta extraída (largo: 1796)
+[2026-09-29 08:54:24] RPTA [10465785531-03-B001-00007076]: Código=0 - La Boleta numero B001-00007076, ha sido aceptada
+[2026-09-29 08:54:24] REPO: 10465785531-03-B001-00007076.xml archivado
+[2026-09-29 13:55:51] PARSE: 10465785531-03-B001-00007067.xml generado
+[2026-09-29 13:55:51] DATA: 10465785531-03-B001-00007067.json generado
+[2026-09-29 13:55:51] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-09-29 13:55:51] FIRMA: 10465785531-03-B001-00007067.xml firmado
+[2026-09-29 13:55:51] ENVIO: 10465785531-03-B001-00007067.zip creado
+[2026-09-29 13:55:51] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007067.zip)
+[2026-09-29 13:55:51] ERROR [10465785531-03-B001-00007067]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-09-29 13:56:01] PARSE: 10465785531-03-B001-00007066.xml generado
+[2026-09-29 13:56:01] DATA: 10465785531-03-B001-00007066.json generado
+[2026-09-29 13:56:01] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-09-29 13:56:01] FIRMA: 10465785531-03-B001-00007066.xml firmado
+[2026-09-29 13:56:01] ENVIO: 10465785531-03-B001-00007066.zip creado
+[2026-09-29 13:56:01] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007066.zip)
+[2026-09-29 13:56:01] ERROR [10465785531-03-B001-00007066]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-09-29 13:56:12] PARSE: 10465785531-01-F001-00000014.xml generado
+[2026-09-29 13:56:12] DATA: 10465785531-01-F001-00000014.json generado
+[2026-09-29 13:56:12] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-09-29 13:56:12] FIRMA: 10465785531-01-F001-00000014.xml firmado
+[2026-09-29 13:56:12] ENVIO: 10465785531-01-F001-00000014.zip creado
+[2026-09-29 13:56:12] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-01-F001-00000014.zip)
+[2026-09-29 13:56:12] ERROR [10465785531-01-F001-00000014]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-09-29 13:56:16] PARSE: 10465785531-03-B001-00007065.xml generado
+[2026-09-29 13:56:16] DATA: 10465785531-03-B001-00007065.json generado
+[2026-09-29 13:56:17] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-09-29 13:56:17] FIRMA: 10465785531-03-B001-00007065.xml firmado
+[2026-09-29 13:56:17] ENVIO: 10465785531-03-B001-00007065.zip creado
+[2026-09-29 13:56:17] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007065.zip)
+[2026-09-29 13:56:17] ERROR [10465785531-03-B001-00007065]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-09-29 13:56:30] PARSE: 10465785531-03-B001-00007067.xml generado
+[2026-09-29 13:56:30] DATA: 10465785531-03-B001-00007067.json generado
+[2026-09-29 13:56:30] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-09-29 13:56:30] FIRMA: 10465785531-03-B001-00007067.xml firmado
+[2026-09-29 13:56:30] ENVIO: 10465785531-03-B001-00007067.zip creado
+[2026-09-29 13:56:30] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007067.zip)
+[2026-09-29 13:56:30] ERROR [10465785531-03-B001-00007067]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-09-29 13:56:34] PARSE: 10465785531-03-B001-00007066.xml generado
+[2026-09-29 13:56:34] DATA: 10465785531-03-B001-00007066.json generado
+[2026-09-29 13:56:34] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-09-29 13:56:34] FIRMA: 10465785531-03-B001-00007066.xml firmado
+[2026-09-29 13:56:34] ENVIO: 10465785531-03-B001-00007066.zip creado
+[2026-09-29 13:56:34] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00007066.zip)
+[2026-09-29 13:56:34] ERROR [10465785531-03-B001-00007066]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.

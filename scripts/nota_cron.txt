@@ -1,0 +1,3 @@
+Al configurar el cron job del servidor, usar la ruta completa:
+
+php /ruta/al/proyecto/scripts/cron_reporte_mensual.php
