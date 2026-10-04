@@ -1,0 +1,10 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /farvexis/
+
+# Permitir acceso a archivos y carpetas reales (assets, plugins, scripts, etc.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Ruta con segmentos: /view-name/seg1/seg2/seg3
+RewriteRule ^([a-zA-Z0-9_-]+)(/.*)?$ index.php?view=$1&_path=$2 [QSA,L]
