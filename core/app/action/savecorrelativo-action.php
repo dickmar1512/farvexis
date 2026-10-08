@@ -7,7 +7,7 @@ try {
     $data = json_decode(file_get_contents('php://input'), true) ?: [];
     $sucursal = SucursalData::getById($data['sucursal_id'] ?? 0);
     if (!$sucursal || !(int)$sucursal->activo) throw new InvalidArgumentException('Selecciona una sucursal activa.');
-    ComprobanteCorrelativoData::guardar((int)$sucursal->id, (string)($data['tipo_comprobante'] ?? ''), (string)($data['serie'] ?? ''), (string)$sucursal->codigo, (int)($data['ultimo_numero'] ?? 0));
+    ComprobanteCorrelativoData::guardar((int)($data['id'] ?? 0), (int)$sucursal->id, (string)($data['tipo_comprobante'] ?? ''), (string)($data['serie'] ?? ''), (string)$sucursal->codigo, (int)($data['ultimo_numero'] ?? 0));
     echo json_encode(['success' => true]);
 } catch (Throwable $e) {
     http_response_code(400);
