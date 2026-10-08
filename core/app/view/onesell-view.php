@@ -18,6 +18,27 @@ $comp_tri = TriData::getById($venta->id, $_GET["tipodoc"]);
 $comp_ley = LeyData::getById($venta->id, $_GET["tipodoc"]);
 $sellTemp = SellData::getById($venta->EXTRA1);
 
+$paciente_nombre = "";
+$paciente_dni = "";
+$medico_nombre = "";
+$medico_cmp = "";
+if (!empty($sellTemp->paciente_id)) {
+    $con = Database::getCon();
+    $res = $con->query("SELECT nombres, numero_documento FROM persona WHERE id = " . intval($sellTemp->paciente_id));
+    if ($r = $res->fetch_assoc()) {
+        $paciente_nombre = $r['nombres'];
+        $paciente_dni = $r['numero_documento'];
+    }
+}
+if (!empty($sellTemp->medico_id)) {
+    $con = Database::getCon();
+    $res = $con->query("SELECT p.nombres, m.cmp FROM medico m JOIN persona p ON m.persona_id = p.id WHERE m.id = " . intval($sellTemp->medico_id));
+    if ($r = $res->fetch_assoc()) {
+        $medico_nombre = $r['nombres'];
+        $medico_cmp = $r['cmp'];
+    }
+}
+
 $sell = (object)[
 	'id'=> $sellTemp->id,
 	'person_id'=> $sellTemp->person_id,
@@ -227,6 +248,20 @@ foreach ($operations as $ope) {
                 <div class="info-row">
                     <span class="info-label">HASH</span>
                     <span class="info-value" style="font-size: 0.75rem;">: <?= htmlspecialchars($sellTemp->codigo_hash) ?></span>
+                </div>
+                <?php endif; ?>
+                <?php if(!empty($paciente_nombre)): ?>
+                <div class="info-row mt-2 pt-2 border-top">
+                    <span class="info-label text-danger">RECETA MÉDICA</span>
+                    <span class="info-value"></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">PACIENTE</span>
+                    <span class="info-value">: <?= htmlspecialchars($paciente_nombre) . " (DNI: " . htmlspecialchars($paciente_dni) . ")" ?></span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">MÉDICO</span>
+                    <span class="info-value">: <?= htmlspecialchars($medico_nombre) . " (CMP: " . htmlspecialchars($medico_cmp) . ")" ?></span>
                 </div>
                 <?php endif; ?>
             </div>

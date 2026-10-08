@@ -13,6 +13,8 @@ $dsctotal = 0;
 $contador = 0;
 
 $freeCodes = ['11','12','13','14','15','16','21','31','32','33','34','35','36','37'];
+$has_controlled = false;
+$controlled_names = [];
 ?>
 <?php if (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0): ?>
     <div class="table-responsive">
@@ -41,6 +43,11 @@ $freeCodes = ['11','12','13','14','15','16','21','31','32','33','34','35','36','
                     
                     $igv_tipo = $p["igv_tipo"] ?? "20";
                     $isFree = in_array($igv_tipo, $freeCodes);
+
+                    if ($product->is_controlled == 1) {
+                        $has_controlled = true;
+                        $controlled_names[] = $product->name;
+                    }
 
                     if ($isFree) {
                         $pt = 0.00;
@@ -161,6 +168,8 @@ $freeCodes = ['11','12','13','14','15','16','21','31','32','33','34','35','36','
     <input type="hidden" name="subtotal_exonerado" value="<?php echo $subtotal_exonerado; ?>">
     <input type="hidden" name="subtotal_inafecto" value="<?php echo $subtotal_inafecto; ?>">
     <input type="hidden" name="subtotal_gratuito" value="<?php echo $subtotal_gratuito; ?>">
+    <input type="hidden" class="cart_has_controlled" value="<?php echo $has_controlled ? '1' : '0'; ?>">
+    <input type="hidden" class="controlled_names" value="<?php echo htmlspecialchars(implode(', ', $controlled_names)); ?>">
 
 <?php else: ?>
     <div class="text-center">
@@ -176,4 +185,6 @@ $freeCodes = ['11','12','13','14','15','16','21','31','32','33','34','35','36','
     <input type="hidden" name="subtotal_exonerado" value="0">
     <input type="hidden" name="subtotal_inafecto" value="0">
     <input type="hidden" name="subtotal_gratuito" value="0">
+    <input type="hidden" class="cart_has_controlled" value="0">
+    <input type="hidden" class="controlled_names" value="">
 <?php endif; ?>

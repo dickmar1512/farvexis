@@ -7,10 +7,17 @@ if(count($_POST) > 0 && isset($_SESSION["cart_sd"]) && count($_SESSION["cart_sd"
     try {
         $cart = $_SESSION["cart_sd"];
         $user_id = $_SESSION["user_id"];
-        $serie = $_POST["serie"];
-        $comprobante = $_POST["comprobante"];
+        
+        $sucursalId = (int)($_SESSION['sucursal_id'] ?? 1);
+        $sucursalObj = SucursalData::getById($sucursalId);
+        $codLocalEmisor = $sucursalObj ? $sucursalObj->codigo : '0000';
+        $serie = ComprobanteCorrelativoData::getSerieDefecto('65', $codLocalEmisor);
+        
         $observacion = $_POST["observacion"];
         $fecha_actual = date("Y-m-d H:i:s");
+        
+        $db = Database::getCon();
+        $comprobante = ComprobanteCorrelativoData::siguiente($db, "65", $serie, $codLocalEmisor, $sucursalId);
 
         // 1. Crear Registro en SELL (como documento interno)
         $sell = new SellData();

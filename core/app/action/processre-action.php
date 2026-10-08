@@ -20,6 +20,20 @@ if (count($_POST) > 0) {
     $cash             = $_POST['money']            ?? 0;
 
     $cart = $_SESSION['reabastecer'];
+    
+    if ($tipo_comprobante == '60') {
+        $db = Database::getCon();
+        $sucursalId = (int)($_SESSION['sucursal_id'] ?? 1);
+        $sucursalObj = SucursalData::getById($sucursalId);
+        $codLocalEmisor = $sucursalObj ? $sucursalObj->codigo : '0000';
+        $serie_defecto = ComprobanteCorrelativoData::getSerieDefecto('60', $codLocalEmisor);
+        
+        // Si el usuario no mandó una serie distinta, usamos la de defecto y guardamos el correlativo incremental
+        if (empty($serie) || $serie === 'I001') {
+            $serie = $serie_defecto;
+        }
+        $comprobante = ComprobanteCorrelativoData::siguiente($db, '60', $serie, $codLocalEmisor, $sucursalId);
+    }
 
     if (count($cart) > 0) {
         $sell = new SellData();
@@ -63,6 +77,10 @@ if (count($_POST) > 0) {
             $op2->laboratorio   = $c['labo'];
             $op2->price_in      = $c['price_in'];
 
+            $anaquel = addslashes($c['anaquel'] ?? '');
+            $is_controlled = intval($c['is_controlled'] ?? 0);
+            Executor::doit("UPDATE product SET is_controlled = $is_controlled, anaquel = '$anaquel' WHERE id = " . $op->product_id);
+
             if (isset($_POST['is_oficial'])) {
                 $op->is_oficial = 1;
             }
@@ -86,9 +104,10 @@ if (count($_POST) > 0) {
                     (int)$_SESSION['user_id'],
                     (int)$operationResult[1],
                     !empty($c['fec_venc']) ? $c['fec_venc'] : null,
-                    null,
+                    !empty($c['fec_fab']) ? $c['fec_fab'] : null,
                     (float)$c['price_in'],
-                    null
+                    !empty($c['anaquel']) ? trim($c['anaquel']) : null,
+                    (!empty($_POST['client_id'])) ? (int)$_POST['client_id'] : null
                 );
             }
         }

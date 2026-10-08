@@ -147,9 +147,17 @@
                                                             $total += $sellTotal;
                                                         }
 													}
-													$total_total += $total;
+													
+													$gastos_historico = GastoData::getByBoxId($box->id);
+													$total_gastos = 0;
+													foreach($gastos_historico as $gh) {
+														$total_gastos += $gh->importe;
+													}
+													$total_neto = $total - $total_gastos;
+
+													$total_total += $total_neto;
 													?>
-													<?="<b>" . number_format($total, 2, ".", ",") . "</b>"?>
+													<?="<b>" . number_format($total_neto, 2, ".", ",") . "</b>"?>
 												</td>
 												<td style="text-align: center;"><?=$fechaFormateada; ?></td>
 												<td style="text-align: center;"><?=$box->user; ?></td>

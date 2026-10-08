@@ -24,8 +24,13 @@ try {
 
     $TIPO        = $_POST["TIPO"] ?? "70";
     $SERIE       = $_POST["SERIE"] ?? "0002";
-    $COMPROBANTE = $_POST["COMPROBANTE"] ?? "1";
     $estado      = '1';
+    
+    $conexion = Database::getCon();
+    $sucursalId = (int)($_SESSION['sucursal_id'] ?? 1);
+    $sucursalObj = SucursalData::getById($sucursalId);
+    $codLocalEmisor = $sucursalObj ? $sucursalObj->codigo : '0000';
+    $COMPROBANTE = ComprobanteCorrelativoData::siguiente($conexion, $TIPO, $SERIE, $codLocalEmisor, $sucursalId);
     $fecEmision  = $_POST["fecEmision"] ?? date("Y-m-d");
     $horEmision  = $_POST["horEmision"] ?? date("H:i:s");
 
@@ -89,6 +94,26 @@ try {
     $sell->person_id        = '7';
     $sell->estado           = $estado;
     $sell->created_at       = $fecEmision . ' ' . $horEmision;
+    $conexion = Database::getCon();
+    $medico_id = null;
+    $paciente_id = null;
+    if (!empty($_POST["paciente_nombre"])) {
+        $p_nombre = $conexion->real_escape_string($_POST["paciente_nombre"]);
+        $p_dni = $conexion->real_escape_string($_POST["paciente_dni"] ?? '');
+        $conexion->query("INSERT INTO persona (tipo_documento_id, numero_documento, nombres) VALUES (1, '$p_dni', '$p_nombre')");
+        $paciente_id = $conexion->insert_id;
+    }
+    if (!empty($_POST["medico_nombre"])) {
+        $m_nombre = $conexion->real_escape_string($_POST["medico_nombre"]);
+        $m_cmp = $conexion->real_escape_string($_POST["medico_cmp"] ?? '');
+        $conexion->query("INSERT INTO persona (nombres) VALUES ('$m_nombre')");
+        $m_persona_id = $conexion->insert_id;
+        $conexion->query("INSERT INTO medico (persona_id, cmp) VALUES ($m_persona_id, '$m_cmp')");
+        $medico_id = $conexion->insert_id;
+    }
+    
+    $sell->medico_id = $medico_id;
+    $sell->paciente_id = $paciente_id;
 
     if (isset($_POST["client_id"]) && $_POST["client_id"] != "") {
         $sell->person_id = $_POST["client_id"];

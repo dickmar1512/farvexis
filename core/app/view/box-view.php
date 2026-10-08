@@ -177,9 +177,43 @@
 									</tbody>
 								</table>
 							</div>
-							<div class="mt-3 text-right">
-								<h3 class="font-weight-bold text-primary mb-0">Total Ventas: S/ <?php echo number_format($total_total, 2, ".", ","); ?></h3>
-								<input type="hidden" id="totalVentas" name="totalVentas" value="<?=$total_total; ?>">
+							<div class="mt-3">
+								<?php
+								$gastos_box = GastoData::getGastosUnBoxed();
+								$total_gastos = 0;
+								foreach($gastos_box as $g) {
+									$total_gastos += $g->importe;
+								}
+								$total_esperado = $total_total - $total_gastos;
+								?>
+								<div class="d-flex justify-content-between align-items-center mb-1">
+									<h5 class="text-muted mb-0">Total Ventas:</h5>
+									<h5 class="font-weight-bold text-dark mb-0">S/ <?php echo number_format($total_total, 2, ".", ","); ?></h5>
+								</div>
+								
+								<?php if(count($gastos_box) > 0): ?>
+								<div class="d-flex justify-content-between align-items-center mb-2">
+									<h5 class="text-danger mb-0">Total Gastos:</h5>
+									<h5 class="font-weight-bold text-danger mb-0">- S/ <?php echo number_format($total_gastos, 2, ".", ","); ?></h5>
+								</div>
+								<div class="bg-white border rounded p-2 mb-2">
+									<h6 class="text-sm font-weight-bold text-muted mb-1 border-bottom pb-1">Detalle de Gastos a Deducir</h6>
+									<ul class="list-unstyled text-xs mb-0 text-muted" style="max-height: 80px; overflow-y: auto;">
+										<?php foreach($gastos_box as $g): ?>
+										<li class="d-flex justify-content-between border-bottom py-1">
+											<span><i class="fa fa-minus-circle text-danger mr-1"></i> <?php echo htmlspecialchars($g->descripcion); ?></span>
+											<span class="font-weight-bold text-dark">S/ <?php echo number_format($g->importe, 2, ".", ","); ?></span>
+										</li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+								<?php endif; ?>
+								
+								<hr class="my-2">
+								<div class="text-right">
+									<h3 class="font-weight-bold text-primary mb-0">Total Esperado: S/ <?php echo number_format($total_esperado, 2, ".", ","); ?></h3>
+								</div>
+								<input type="hidden" id="totalVentas" name="totalVentas" value="<?=$total_esperado; ?>">
 							</div>
 							<?php
 						} else {
@@ -198,7 +232,7 @@
 						<div class="d-flex align-items-center mb-3">
 							<span class="badge bg-dark p-2 text-uppercase font-weight-bold text-white" style="background-color: #343a40;">Billetes y Monedas</span>
 						</div>
-						<?php if ($total_total > 0): ?>
+						<?php if ($total_esperado > 0 || count($gastos_box) > 0 || $total_total > 0): ?>
 							<div class="table-responsive">
 								<table class="table table-sm table-bordered denominations-table" id="denominations">
 									<thead class="thead-light text-center" style="background-color: #f8f9fa;">
@@ -291,7 +325,7 @@
 						<div class="d-flex align-items-center mb-3">
 							<span class="badge bg-dark p-2 text-uppercase font-weight-bold text-white" style="background-color: #343a40;">Resultados</span>
 						</div>
-						<?php if ($total_total > 0): ?>
+						<?php if ($total_esperado > 0 || count($gastos_box) > 0 || $total_total > 0): ?>
 							<!-- Live Calculations -->
 							<div class="difference-container" id="differenceContainer">
 								<h6 class="font-weight-bold text-muted text-uppercase mb-2 text-xs">Arqueo en Tiempo Real</h6>
@@ -310,7 +344,7 @@
 								</div>
 								<div class="row mb-1 text-sm">
 									<div class="col-7 text-muted font-weight-bold">Esperado:</div>
-									<div class="col-5 font-weight-bold text-right text-dark">S/ <?= number_format($total_total, 2) ?></div>
+									<div class="col-5 font-weight-bold text-right text-dark">S/ <?= number_format($total_esperado, 2) ?></div>
 								</div>
 								<hr class="my-2">
 								<div class="row align-items-center">

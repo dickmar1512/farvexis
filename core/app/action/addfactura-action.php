@@ -206,6 +206,25 @@ try {
     $sell->fec_vencimiento  = ($formaPago == 2 && $fecVencimiento !== '-') ? $fecVencimiento : null;
     $sell->person_id        = $person_id;
     $sell->created_at       = $fecEmision . ' ' . $horEmision;
+    $medico_id = null;
+    $paciente_id = null;
+    if (!empty($_POST["paciente_nombre"])) {
+        $p_nombre = $conexion->real_escape_string($_POST["paciente_nombre"]);
+        $p_dni = $conexion->real_escape_string($_POST["paciente_dni"] ?? '');
+        $conexion->query("INSERT INTO persona (tipo_documento_id, numero_documento, nombres) VALUES (1, '$p_dni', '$p_nombre')");
+        $paciente_id = $conexion->insert_id;
+    }
+    if (!empty($_POST["medico_nombre"])) {
+        $m_nombre = $conexion->real_escape_string($_POST["medico_nombre"]);
+        $m_cmp = $conexion->real_escape_string($_POST["medico_cmp"] ?? '');
+        $conexion->query("INSERT INTO persona (nombres) VALUES ('$m_nombre')");
+        $m_persona_id = $conexion->insert_id;
+        $conexion->query("INSERT INTO medico (persona_id, cmp) VALUES ($m_persona_id, '$m_cmp')");
+        $medico_id = $conexion->insert_id;
+    }
+    
+    $sell->medico_id = $medico_id;
+    $sell->paciente_id = $paciente_id;
 
     $s = $sell->add2();
     $sell_id = $s[1];

@@ -2,35 +2,57 @@
 ####################### NUMERO DE REGISTRO DE COMPROBANTES ###############################
 $mysqli = Database::getCon(); //BASE DE DATOS
 
-//cantidad de boleta en la version 1.2
-$query = $mysqli->prepare("SELECT * FROM boleta");//TABLA
-$query->execute();
-$query->store_result();
-$registros = $query->num_rows;
+$sucursalId = (int)($_SESSION['sucursal_id'] ?? 1);
+$sucursalObj = SucursalData::getById($sucursalId);
+$codLocalEmisor = $sucursalObj ? $sucursalObj->codigo : '0000';
 
-$query = $mysqli->prepare("SELECT * FROM factura");//TABLA
-$query->execute();
-$query->store_result();
-$registros_factura = $query->num_rows;
+$defaultBoletaSerie = ComprobanteCorrelativoData::getSerieDefecto('03', $codLocalEmisor);
+$defaultFacturaSerie = ComprobanteCorrelativoData::getSerieDefecto('01', $codLocalEmisor);
+$defaultNvSerie = ComprobanteCorrelativoData::getSerieDefecto('70', $codLocalEmisor);
 
-$query = $mysqli->prepare("SELECT * FROM sell WHERE tipo_comprobante = '70' ");
-$query->execute();
-$query->store_result();
-$registros_orden = $query->num_rows;
+// BOLETA (03)
+$q_b = $mysqli->query("SELECT serie, ultimo_numero FROM comprobante_correlativo WHERE sucursal_id=$sucursalId AND tipo_comprobante='03' AND serie='$defaultBoletaSerie'");
+if($q_b && $row_b = $q_b->fetch_assoc()){
+    $SERIE = $row_b['serie'];
+    $COMPROBANTE = str_pad($row_b['ultimo_numero'] + 1, 8, '0', STR_PAD_LEFT);
+} else {
+    $SERIE = $defaultBoletaSerie;
+    $COMPROBANTE = '00000001';
+}
 
-$id_comprobante_actual = $registros + 1;
-$id_comprobante_actual_f = $registros_factura + 1;
-$id_comprobante_actual_o = $registros_orden + 1;
+// FACTURA (01)
+$q_f = $mysqli->query("SELECT serie, ultimo_numero FROM comprobante_correlativo WHERE sucursal_id=$sucursalId AND tipo_comprobante='01' AND serie='$defaultFacturaSerie'");
+if($q_f && $row_f = $q_f->fetch_assoc()){
+    $SERIE_F = $row_f['serie'];
+    $COMPROBANTE_F = str_pad($row_f['ultimo_numero'] + 1, 8, '0', STR_PAD_LEFT);
+} else {
+    $SERIE_F = $defaultFacturaSerie;
+    $COMPROBANTE_F = '00000001';
+}
+
+// NOTA VENTA (70)
+$q_nv = $mysqli->query("SELECT serie, ultimo_numero FROM comprobante_correlativo WHERE sucursal_id=$sucursalId AND tipo_comprobante='70' AND serie='$defaultNvSerie'");
+if($q_nv && $row_nv = $q_nv->fetch_assoc()){
+    $SERIE_NV = $row_nv['serie'];
+    $ORDEN = str_pad($row_nv['ultimo_numero'] + 1, 8, '0', STR_PAD_LEFT);
+} else {
+    $SERIE_NV = $defaultNvSerie;
+    $ORDEN = '00000001';
+}
 
 $empresa = EmpresaData::getDatos();
 
 // Cálculo de totales para los formularios (Boleta, Factura, Nota Venta)
 $total = 0;
 $dsctotal = 0;
+$has_controlled = false;
 if (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0) {
     foreach ($_SESSION["cart"] as $p) {
         $product = ProductData::getById($p["product_id"]);
         if($product) {
+            if ($product->is_controlled == 1) {
+                $has_controlled = true;
+            }
             $precio = ($product->is_may == 1) ? $product->price_may : $p["precio_unitario"];
             $pt = ($precio - $p["descuento"]) * $p["q"];
             $total += $pt;
@@ -40,88 +62,6 @@ if (isset($_SESSION["cart"]) && count($_SESSION["cart"]) > 0) {
 }
 $total = round($total, 2);
 $dsctotal = round($dsctotal, 2);
-function generaCerosComprobante($numero)
-{
-	$empresa = EmpresaData::getDatos();
-	$largo_numero = strlen($numero); //OBTENGO EL LARGO DEL NUMERO
-
-	$largo_maximo = 8; //ESPECIFICO EL LARGO MAXIMO DE LA CADENA
-	if ($empresa->Emp_Sucursal != 0) {
-		$largo_maximo = 8;
-	} //PARCHE OTRA SUCURSAL
-	$agregar = $largo_maximo - $largo_numero; //TOMO LA CANTIDAD DE 0 AGREGAR
-	for ($i = 0; $i < $agregar; $i++) {
-		$numero = "0" . $numero;
-	} //AGREGA LOS CEROS
-	return $numero; //RETORNA EL NUMERO CON LOS CEROS
-}
-
-function generaCerosSerie($numero2)
-{
-	$empresa = EmpresaData::getDatos();
-	$largo_numero = strlen($numero2);//OBTENGO EL LARGO DEL NUMERO
-	$largo_maximo = 3;//ESPECIFICO EL LARGO MAXIMO DE LA CADENA
-	if ($empresa->Emp_Sucursal != 0) {
-		$largo_maximo = 2;
-	} //PARCHE OTRA SUCURSAL
-	$agregar = $largo_maximo - $largo_numero;   //TOMO LA CANTIDAD DE 0 AGREGAR
-	for ($i = 0; $i < $agregar; $i++) {
-		$numero2 = "0" . $numero2;
-	} //AGREGA LOS CEROS
-	return $numero2; //RETORNA EL NUMERO CON LOS CEROS
-}
-
-//COMPROBANTE PRIMERA SERIE B001
-$NUMERO_COMPROBANTE = generaCerosComprobante($id_comprobante_actual);
-//CAPTAMOS SERIE DE B001 AL B999
-$NUMERO_SERIE = (int) (($id_comprobante_actual / 99999999) + 1);
-if ($empresa->Emp_Sucursal == 0) {
-	$SERIE = "B" . generaCerosSerie($NUMERO_SERIE);
-} else if ($empresa->Emp_Sucursal == 1) {
-	$SERIE = "BB" . generaCerosSerie($NUMERO_SERIE);
-} else if ($empresa->Emp_Sucursal == 2) {
-	$SERIE = "BD" . generaCerosSerie($NUMERO_SERIE);
-} else if ($empresa->Emp_Sucursal == 3) {
-	$SERIE = "BF" . generaCerosSerie($NUMERO_SERIE);
-} else if ($empresa->Emp_Sucursal == 4) {
-	$SERIE = "BH" . generaCerosSerie($NUMERO_SERIE);
-} else if ($empresa->Emp_Sucursal == 5) {
-	$SERIE = "BJ" . generaCerosSerie($NUMERO_SERIE);
-}
-
-
-//COMPROBANTE SERIE B001 AL SUPERIOR
-if ($NUMERO_SERIE > 1) {
-	$NUMERO_COMPROBANTE = $id_comprobante_actual % 99999999;
-}
-$COMPROBANTE = generaCerosComprobante($NUMERO_COMPROBANTE);
-
-//COMPROBANTE PRIMERA SERIE F001
-$NUMERO_COMPROBANTE_F = generaCerosComprobante($id_comprobante_actual_f);
-//CAPTAMOS SERIE DE F001 AL F999
-$NUMERO_SERIE_F = (int) (($id_comprobante_actual_f / 99999999) + 1);
-
-if ($empresa->Emp_Sucursal == 0) {
-	$SERIE_F = "F" . generaCerosSerie($NUMERO_SERIE_F);
-} else if ($empresa->Emp_Sucursal == 1) {
-	$SERIE_F = "FB" . generaCerosSerie($NUMERO_SERIE_F);
-} else if ($empresa->Emp_Sucursal == 2) {
-	$SERIE_F = "FD" . generaCerosSerie($NUMERO_SERIE_F);
-} else if ($empresa->Emp_Sucursal == 3) {
-	$SERIE_F = "FF" . generaCerosSerie($NUMERO_SERIE_F);
-} else if ($empresa->Emp_Sucursal == 4) {
-	$SERIE_F = "FH" . generaCerosSerie($NUMERO_SERIE_F);
-} else if ($empresa->Emp_Sucursal == 5) {
-	$SERIE_F = "FJ" . generaCerosSerie($NUMERO_SERIE_F);
-}
-//COMPROBANTE SERIE B001 AL SUPERIOR
-if ($NUMERO_SERIE_F > 1) {
-	$NUMERO_COMPROBANTE_F = $id_comprobante_actual_f % 99999999;
-}
-$COMPROBANTE_F = generaCerosComprobante($NUMERO_COMPROBANTE_F);
-
-$ORDEN = generaCerosComprobante($id_comprobante_actual_o);
-#####################################################################################
 $empresa = EmpresaData::getDatos();
 ?>
 
@@ -308,7 +248,7 @@ $empresa = EmpresaData::getDatos();
                             <input type="hidden" name="TIPO" value="03">
                             <input type="hidden" name="tipOperacion" value="0101">
                             <input type="hidden" name="fecVencimiento" value="-">
-                            <input type="hidden" name="codLocalEmisor" value="0000">
+                            <input type="hidden" name="codLocalEmisor" value="<?php echo $codLocalEmisor; ?>">
                             <input type="hidden" name="tipMoneda" value="PEN">
                             <input type="hidden" name="porDescGlobal" value="-">
                             <input type="hidden" name="mtoDescGlobal" value="0">
@@ -403,6 +343,16 @@ $empresa = EmpresaData::getDatos();
                                                 <div class="col-md-4"><div class="form-group"><label>CASH CLIENTE:</label><input type="number" name="money" id="money" required class="form-control form-control-sm" step="any" value="<?php echo $total; ?>"></div></div>
                                                 <div class="col-md-4"><div class="form-group"><label>PAGO PARCIAL EFECTIVO:</label><input type="number" name="pagoParcial" id="pagoParcial" class="form-control form-control-sm" step="any" value="0"></div></div>
                                             </div>
+                                            <div class="row mt-2 border-top pt-2 recipe-section" style="display:none;">
+                                                <div class="col-12">
+                                                    <h6 class="text-danger font-weight-bold"><i class="fa fa-prescription"></i> RECETA MÉDICA (Producto Controlado)</h6>
+                                                    <small class="recipe-products-list text-muted d-block mb-2"></small>
+                                                </div>
+                                                <div class="col-md-8"><div class="form-group"><label>PACIENTE NOMBRE:</label><div class="input-group"><input type="text" name="paciente_nombre" class="form-control form-control-sm" id="paciente_nombre_1"><div class="input-group-append"><button type="button" class="btn btn-sm btn-info" onclick="openModalPaciente(1)"><i class="fa fa-user-plus"></i></button></div></div></div></div>
+                                                <div class="col-md-4"><div class="form-group"><label>PACIENTE DNI:</label><input type="text" name="paciente_dni" class="form-control form-control-sm" id="paciente_dni_1"></div></div>
+                                                <div class="col-md-8"><div class="form-group"><label>MÉDICO NOMBRE:</label><div class="input-group"><input type="text" name="medico_nombre" class="form-control form-control-sm" id="medico_nombre_1"><div class="input-group-append"><button type="button" class="btn btn-sm btn-info" onclick="openModalMedico(1)"><i class="fa fa-user-md"></i></button></div></div></div></div>
+                                                <div class="col-md-4"><div class="form-group"><label>MÉDICO CMP:</label><input type="text" name="medico_cmp" class="form-control form-control-sm" id="medico_cmp_1"></div></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -418,7 +368,7 @@ $empresa = EmpresaData::getDatos();
                             <input type="hidden" name="TIPO" value="01">
                             <input type="hidden" name="tipOperacion" value="0101">
                             <input type="hidden" name="fecVencimiento" value="-">
-                            <input type="hidden" name="codLocalEmisor" value="0000">
+                            <input type="hidden" name="codLocalEmisor" value="<?php echo $codLocalEmisor; ?>">
                             <input type="hidden" name="tipMoneda" value="PEN">
                             <input type="hidden" name="porDescGlobal" value="-">
                             <input type="hidden" name="mtoDescGlobal" value="0">
@@ -505,6 +455,16 @@ $empresa = EmpresaData::getDatos();
                                                 <div class="col-md-4"><div class="form-group"><label>CASH CLIENTE:</label><input type="number" name="money" id="money2" required class="form-control form-control-sm" step="any" value="<?php echo $total; ?>"></div></div>
                                                 <div class="col-md-4"><div class="form-group"><label>PAGO PARCIAL:</label><input type="number" name="pagoParcial" class="form-control form-control-sm" step="any" value="0"></div></div>
                                             </div>
+                                            <div class="row mt-2 border-top pt-2 recipe-section" style="display:none;">
+                                                <div class="col-12">
+                                                    <h6 class="text-danger font-weight-bold"><i class="fa fa-prescription"></i> RECETA MÉDICA (Producto Controlado)</h6>
+                                                    <small class="recipe-products-list text-muted d-block mb-2"></small>
+                                                </div>
+                                                <div class="col-md-8"><div class="form-group"><label>PACIENTE NOMBRE:</label><div class="input-group"><input type="text" name="paciente_nombre" class="form-control form-control-sm" id="paciente_nombre_2"><div class="input-group-append"><button type="button" class="btn btn-sm btn-info" onclick="openModalPaciente(2)"><i class="fa fa-user-plus"></i></button></div></div></div></div>
+                                                <div class="col-md-4"><div class="form-group"><label>PACIENTE DNI:</label><input type="text" name="paciente_dni" class="form-control form-control-sm" id="paciente_dni_2"></div></div>
+                                                <div class="col-md-8"><div class="form-group"><label>MÉDICO NOMBRE:</label><div class="input-group"><input type="text" name="medico_nombre" class="form-control form-control-sm" id="medico_nombre_2"><div class="input-group-append"><button type="button" class="btn btn-sm btn-info" onclick="openModalMedico(2)"><i class="fa fa-user-md"></i></button></div></div></div></div>
+                                                <div class="col-md-4"><div class="form-group"><label>MÉDICO CMP:</label><input type="text" name="medico_cmp" class="form-control form-control-sm" id="medico_cmp_2"></div></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -527,7 +487,7 @@ $empresa = EmpresaData::getDatos();
                                                 <div class="col-md-6"><div class="form-group"><label>HORA:</label><input type="text" name="horEmision" class="form-control form-control-sm" value="<?php echo date('H:i:s'); ?>"></div></div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6"><div class="form-group"><label>SERIE:</label><input type="text" name="SERIE" class="form-control form-control-sm" value="0002"></div></div>
+                                                <div class="col-md-6"><div class="form-group"><label>SERIE:</label><input type="text" name="SERIE" class="form-control form-control-sm" value="<?php echo $SERIE_NV; ?>"></div></div>
                                                 <div class="col-md-6"><div class="form-group"><label>Nº ORDEN:</label><input type="text" name="COMPROBANTE" class="form-control form-control-sm" value="<?php echo $ORDEN; ?>"></div></div>
                                             </div>
                                         </div>
@@ -540,9 +500,14 @@ $empresa = EmpresaData::getDatos();
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group"><label>CLIENTE:</label>
-                                                        <select name="client_id" class="form-control form-control-sm">
-                                                            <?php foreach ($clients as $client): ?><option value="<?php echo $client->id; ?>"><?php echo $client->name . " " . $client->lastname; ?></option><?php endforeach; ?>
-                                                        </select>
+                                                        <div class="input-group">
+                                                            <select name="client_id" id="nv_client_id" class="form-control form-control-sm">
+                                                                <?php foreach ($clients as $client): ?><option value="<?php echo $client->id; ?>"><?php echo $client->name . " " . $client->lastname; ?></option><?php endforeach; ?>
+                                                            </select>
+                                                            <div class="input-group-append">
+                                                                <button type="button" class="btn btn-sm btn-info" onclick="openModalClienteNV()"><i class="fa fa-plus"></i> Nuevo</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -550,6 +515,16 @@ $empresa = EmpresaData::getDatos();
                                                 <div class="col-md-12">
                                                     <div class="form-group"><label>EFECTIVO:</label><input type="number" name="money3" id="money3" class="form-control form-control-sm" step="any" required><input type="hidden" name="discount3" value="0"></div>
                                                 </div>
+                                            </div>
+                                            <div class="row mt-2 border-top pt-2 recipe-section" style="display:none;">
+                                                <div class="col-12">
+                                                    <h6 class="text-danger font-weight-bold"><i class="fa fa-prescription"></i> RECETA MÉDICA (Producto Controlado)</h6>
+                                                    <small class="recipe-products-list text-muted d-block mb-2"></small>
+                                                </div>
+                                                <div class="col-md-8"><div class="form-group"><label>PACIENTE NOMBRE:</label><div class="input-group"><input type="text" name="paciente_nombre" class="form-control form-control-sm" id="paciente_nombre_3"><div class="input-group-append"><button type="button" class="btn btn-sm btn-info" onclick="openModalPaciente(3)"><i class="fa fa-user-plus"></i></button></div></div></div></div>
+                                                <div class="col-md-4"><div class="form-group"><label>PACIENTE DNI:</label><input type="text" name="paciente_dni" class="form-control form-control-sm" id="paciente_dni_3"></div></div>
+                                                <div class="col-md-8"><div class="form-group"><label>MÉDICO NOMBRE:</label><div class="input-group"><input type="text" name="medico_nombre" class="form-control form-control-sm" id="medico_nombre_3"><div class="input-group-append"><button type="button" class="btn btn-sm btn-info" onclick="openModalMedico(3)"><i class="fa fa-user-md"></i></button></div></div></div></div>
+                                                <div class="col-md-4"><div class="form-group"><label>MÉDICO CMP:</label><input type="text" name="medico_cmp" class="form-control form-control-sm" id="medico_cmp_3"></div></div>
                                             </div>
                                         </div>
                                     </div>
@@ -573,6 +548,45 @@ $empresa = EmpresaData::getDatos();
                             </div>
                             <?php unset($_SESSION["errors"]); ?>
                         <?php endif; ?>
+                    </div>
+
+                    <!-- MODALES DE CREACION -->
+                    <div class="modal fade" id="modalCrearPersona" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                                <form id="formCrearPersona" onsubmit="savePersonaAjax(event)">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalPersonaTitle">Nuevo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="role" id="modal_role" value="">
+                                        <input type="hidden" id="modal_target_idx" value="">
+                                        
+                                        <div class="form-group">
+                                            <label>Nombres</label>
+                                            <input type="text" class="form-control form-control-sm" name="nombres" id="modal_nombres" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Apellidos</label>
+                                            <input type="text" class="form-control form-control-sm" name="apellido_paterno" id="modal_apellidos">
+                                        </div>
+                                        <div class="form-group" id="group_doc">
+                                            <label>Documento / DNI</label>
+                                            <input type="text" class="form-control form-control-sm" name="numero_documento" id="modal_documento">
+                                        </div>
+                                        <div class="form-group" id="group_cmp" style="display:none;">
+                                            <label>CMP</label>
+                                            <input type="text" class="form-control form-control-sm" name="cmp" id="modal_cmp">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

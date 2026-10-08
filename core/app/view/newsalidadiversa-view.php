@@ -1,15 +1,12 @@
 <?php
-// Generar siguiente número para Serie 004 y Tipo 60
-$last_sd = SellData::getLastBySerie('004', '60');
-$next_num = 1;
-if($last_sd){
-    $next_num = intval($last_sd->comprobante) + 1;
-}
-
-function lpad($num, $len) {
-    return str_pad($num, $len, "0", STR_PAD_LEFT);
-}
-$correlativo = lpad($next_num, 8);
+// Generar siguiente número para Serie de Salida Diversa y Tipo 65
+$db = Database::getCon();
+$sucursalId = (int)($_SESSION['sucursal_id'] ?? 1);
+$sucursalObj = SucursalData::getById($sucursalId);
+$codLocalEmisor = $sucursalObj ? $sucursalObj->codigo : '0000';
+$serie_salida = ComprobanteCorrelativoData::getSerieDefecto('65', $codLocalEmisor);
+// Obtenemos el próximo correlativo, pero SIN sincronizar (eso se hace al guardar)
+$correlativo = ComprobanteCorrelativoData::verSiguiente($db, '65', $serie_salida, $codLocalEmisor, $sucursalId);
 ?>
 <section class="content-header">
     <div class="container-fluid">
@@ -18,7 +15,7 @@ $correlativo = lpad($next_num, 8);
                 <h1><i class="fas fa-file-invoice text-warning mr-2"></i> Nueva Salida Diversa</h1>
             </div>
             <div class="col-sm-6 text-right">
-                <span class="badge badge-dark p-2" style="font-size: 1rem;">Serie: 004 - Nº: <?php echo $correlativo; ?></span>
+                <span class="badge badge-dark p-2" style="font-size: 1rem;">Serie: <?php echo $serie_salida; ?> - Nº: <?php echo $correlativo; ?></span>
             </div>
         </div>
     </div>

@@ -22,12 +22,15 @@ if (isset($_GET["product"]) && $_GET["product"] != ""):
                                 <th class="text-center" style="width: 40px;">#</th>
                                 <th style="width: 20%;">Nombre / Presentación</th>
                                 <th class="text-center">Stock Act.</th>
-                                <th style="width: 110px;">Costo (S/)</th>
-                                <th style="width: 70px;">Cant.</th>
-                                <th style="width: 120px;">R.S.</th>
-                                <th style="width: 100px;">Lote</th>
-                                <th style="width: 130px;">Vencimiento</th>
                                 <th>Laboratorio</th>
+                                <th style="width: 120px;">R.S.</th>
+                                <th style="width: 130px;">F. Fabr.</th>
+                                <th style="width: 130px;">Vencimiento</th>
+                                <th style="width: 70px;">Cant.</th>
+                                <th style="width: 100px;">Lote</th>
+                                <th style="width: 110px;">Costo (S/)</th>
+                                <th style="width: 90px;">Anaquel</th>
+                                <th class="text-center" style="width: 50px;">Ctrl</th>
                                 <th class="text-center" style="width: 110px;">Acción</th>
                             </tr>
                         </thead>
@@ -48,19 +51,27 @@ if (isset($_GET["product"]) && $_GET["product"] != ""):
                                             <span class="badge badge-secondary badge-stock">N/A</span>
                                         <?php endif; ?>
                                     </td>
+                                    <td><input type="text" class="form-control form-control-sm text-xs re-labo" value="<?php echo $product->laboratorio ?>" placeholder="Laborat."></td>
+                                    <td><input type="text" class="form-control form-control-sm text-xs re-rs" value="<?php echo $product->reg_san ?>" placeholder="R.S."></td>
+                                    <td><input type="date" class="form-control form-control-sm text-xs re-fec-fab"></td>
+                                    <td><input type="date" class="form-control form-control-sm text-xs re-fec-venc" value="<?= date('Y-m-d', strtotime('+1 year')) ?>"></td>
+                                    <td>
+                                        <input type="number" step="any" class="form-control form-control-sm border-primary text-center font-weight-bold re-q" required placeholder="0">
+                                    </td>
+                                    <td><input type="text" class="form-control form-control-sm text-xs re-nl" placeholder="Lote"></td>
                                     <td>
                                         <div class="input-group input-group-sm">
                                             <div class="input-group-prepend"><span class="input-group-text">S/</span></div>
                                             <input type="number" step="any" class="form-control font-weight-bold re-price-in" value="<?php echo number_format($product->price_in, 2, '.', ''); ?>">
                                         </div>
                                     </td>
-                                    <td>
-                                        <input type="number" step="any" class="form-control form-control-sm border-primary text-center font-weight-bold re-q" required placeholder="0">
+                                    <td><input type="text" class="form-control form-control-sm text-xs re-anaquel" value="<?php echo $product->anaquel ?>" placeholder="A-1"></td>
+                                    <td class="text-center">
+                                        <div class="custom-control custom-switch custom-switch-sm">
+                                            <input type="checkbox" class="custom-control-input re-controlled" id="ctrl_<?= $product->id ?>" <?= $product->is_controlled ? 'checked' : '' ?>>
+                                            <label class="custom-control-label" for="ctrl_<?= $product->id ?>"></label>
+                                        </div>
                                     </td>
-                                    <td><input type="text" class="form-control form-control-sm text-xs re-rs" value="<?php echo $product->reg_san ?>" placeholder="R.S."></td>
-                                    <td><input type="text" class="form-control form-control-sm text-xs re-nl" placeholder="Lote"></td>
-                                    <td><input type="date" class="form-control form-control-sm text-xs re-fec-venc" value="<?= date('Y-m-d', strtotime('+1 year')) ?>"></td>
-                                    <td><input type="text" class="form-control form-control-sm text-xs re-labo" value="<?php echo $product->laboratorio ?>" placeholder="Laborat."></td>
                                     <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-success px-3 shadow-sm font-weight-bold btn-add-to-re">
                                             <i class="fas fa-plus mr-1"></i> AGREGAR
