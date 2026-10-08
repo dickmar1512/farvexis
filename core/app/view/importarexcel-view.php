@@ -85,63 +85,75 @@
                                             </tr>
                                             <tr>
                                                 <td class="pl-3 font-weight-bold text-info">G (6)</td>
-                                                <td>F. Vencimiento (dd/mm/aaaa)</td>
+                                                <td>F. Fabricación (dd/mm/aaaa)</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-3 font-weight-bold text-info">H (7)</td>
-                                                <td class="text-muted italic">Cant. x Caja (Opcional)</td>
+                                                <td>F. Vencimiento (dd/mm/aaaa)</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-3 font-weight-bold text-info">I (8)</td>
-                                                <td>Stock Inicial / Unid.*</td>
+                                                <td class="text-muted italic">Cant. x Caja (Opcional)</td>
                                             </tr>
                                             <tr>
                                                 <td class="pl-3 font-weight-bold text-info">J (9)</td>
+                                                <td>Stock Inicial / Unid.*</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-3 font-weight-bold text-info">K (10)</td>
                                                 <td>Número de Lote</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold">K (10)</td>
+                                                <td class="pl-3 font-weight-bold">L (11)</td>
                                                 <td class="text-muted italic">Precio Prov. (Opcional)</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">L (11)</td>
+                                                <td class="pl-3 font-weight-bold text-info">M (12)</td>
                                                 <td>Precio Unit. Costo*</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">M (12)</td>
+                                                <td class="pl-3 font-weight-bold text-info">N (13)</td>
                                                 <td>Nro. Factura (F001-001)*</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">N (13)</td>
+                                                <td class="pl-3 font-weight-bold text-info">O (14)</td>
                                                 <td>Nro. de Guía</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">O (14)</td>
+                                                <td class="pl-3 font-weight-bold text-info">P (15)</td>
                                                 <td>Precio Venta Público*</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">P (15)</td>
+                                                <td class="pl-3 font-weight-bold text-info">Q (16)</td>
                                                 <td>Precio Venta Mayor</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">Q (16)</td>
+                                                <td class="pl-3 font-weight-bold text-info">R (17)</td>
                                                 <td>Código de Barras*</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">R (17)</td>
+                                                <td class="pl-3 font-weight-bold text-info">S (18)</td>
                                                 <td>Nombre Proveedor</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">S (18)</td>
+                                                <td class="pl-3 font-weight-bold text-info">T (19)</td>
                                                 <td>RUC Proveedor*</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">T (19)</td>
+                                                <td class="pl-3 font-weight-bold text-info">U (20)</td>
                                                 <td>Sede / Observaciones</td>
                                             </tr>
                                             <tr>
-                                                <td class="pl-3 font-weight-bold text-info">U (20)</td>
+                                                <td class="pl-3 font-weight-bold text-info">V (21)</td>
                                                 <td>F. Compra (dd/mm/aaaa)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-3 font-weight-bold text-info">W (22)</td>
+                                                <td>Prod. Controlado (SI/NO)</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="pl-3 font-weight-bold text-info">X (23)</td>
+                                                <td>Anaquel</td>
                                             </tr>
                                         </tbody>
                                     </table>

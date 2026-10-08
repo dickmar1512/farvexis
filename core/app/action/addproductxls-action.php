@@ -68,18 +68,20 @@ try {
     $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmtSelectProveedor = $conn->prepare("SELECT id FROM person WHERE numero_documento = ?");
-    $stmtInsertProveedor = $conn->prepare("INSERT INTO person (tipo_persona, numero_documento, name, lastname, address1, email1, phone1, kind, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmtSelectProveedor = $conn->prepare("SELECT c.id FROM cliente c JOIN persona p ON c.persona_id = p.id WHERE p.numero_documento = ? AND c.kind = 2");
+    $stmtInsertPersona = $conn->prepare("INSERT INTO persona (tipo_documento_id, numero_documento, nombres, apellido_paterno, direccion, email, telefono, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmtInsertCliente = $conn->prepare("INSERT INTO cliente (persona_id, tipo_cliente, company, kind) VALUES (?, ?, ?, 2)");
 
     $stmtSelectProducto = $conn->prepare("SELECT id FROM product WHERE (barcode <> '' AND barcode = ?)");
-    $stmtInsertProducto = $conn->prepare("INSERT INTO product (image, barcode, name, description, stock, is_stock, inventary_min, price_in, price_out, price_may, unit, presentation, user_id, category_id, fecha_venc, laboratorio, reg_san, created_at, is_active, cod_digemid, principio_activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmtUpdateProducto = $conn->prepare("UPDATE product SET stock = stock + ?, price_in = ?, price_out = ?, price_may = ?, fecha_venc = ?, user_id = ?, reg_san = ?, cod_digemid = ?, principio_activo = ? WHERE id = ?");
+    $stmtInsertProducto = $conn->prepare("INSERT INTO product (image, barcode, name, description, stock, is_stock, inventary_min, price_in, price_out, price_may, unit, presentation, user_id, category_id, fecha_venc, laboratorio, reg_san, created_at, is_active, cod_digemid, principio_activo, is_controlled, anaquel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmtUpdateProducto = $conn->prepare("UPDATE product SET stock = stock + ?, price_in = ?, price_out = ?, price_may = ?, fecha_venc = ?, user_id = ?, reg_san = ?, cod_digemid = ?, principio_activo = ?, is_controlled = ?, anaquel = ? WHERE id = ?");
 
     $stmtSelectCompra = $conn->prepare("SELECT id FROM sell WHERE estado = 1 and comprobante = ? AND serie = ?");
     $stmtInsertCompra = $conn->prepare("INSERT INTO sell (person_id, tipo_comprobante, serie, comprobante, fecha_emi, user_id, operation_type_id, created_at, total, cash, discount, observacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmtInsertOperacion = $conn->prepare("INSERT INTO operation (product_id, q, prec_alt, descuento, operation_type_id, sell_id, created_at, descripcion, idpaquete) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmtInsertLote = $conn->prepare("INSERT INTO lote (id_prod, num_lot, fech_ing, id_sell, user_id, fecha_vencimiento, cantidad_inicial, cantidad_disponible, costo_unitario, estado, created_at) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, 'disponible', NOW())");
-    $stmtUpdateLote = $conn->prepare("UPDATE lote SET cantidad_inicial = cantidad_inicial + ?, cantidad_disponible = cantidad_disponible + ?, fecha_vencimiento = COALESCE(?, fecha_vencimiento), costo_unitario = COALESCE(?, costo_unitario), estado = 'disponible', updated_at = NOW() WHERE id = ?");
+    $stmtInsertLote = $conn->prepare("INSERT INTO lote (id_prod, num_lot, fech_ing, id_sell, user_id, fecha_fabricacion, fecha_vencimiento, cantidad_inicial, cantidad_disponible, costo_unitario, estado, proveedor_id, created_at) VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, 'disponible', ?, NOW())");
+    $stmtUpdateLote = $conn->prepare("UPDATE lote SET cantidad_inicial = cantidad_inicial + ?, cantidad_disponible = cantidad_disponible + ?, fecha_fabricacion = COALESCE(?, fecha_fabricacion), fecha_vencimiento = COALESCE(?, fecha_vencimiento), costo_unitario = COALESCE(?, costo_unitario), estado = 'disponible', proveedor_id = COALESCE(?, proveedor_id), updated_at = NOW() WHERE id = ?");
+    $stmtInsertLoteMovimiento = $conn->prepare("INSERT INTO lote_movimiento (lote_id, product_id, operation_id, tipo, cantidad, costo_unitario, referencia, user_id) VALUES (?, ?, ?, 'entrada', ?, ?, 'INGRESO', ?)");
 
     $stmtSelectUnidad = $conn->prepare("SELECT id FROM unidad_medida WHERE name = ?");
     $stmtInsertUnidad = $conn->prepare("INSERT INTO unidad_medida (name, sigla) VALUES (?, '-')");
@@ -111,8 +113,8 @@ try {
             continue;
         }
 
-        $rucproveedor = trim($fields[18] ?? '');
-        $proveedor    = trim($fields[17] ?? '');
+        $rucproveedor = trim($fields[19] ?? '');
+        $proveedor    = trim($fields[18] ?? '');
 
         if (empty($rucproveedor)) continue;
 
@@ -122,7 +124,10 @@ try {
         if ($proveedorExistente) {
             $idproveedor = $proveedorExistente['id'];
         } else {
-            $stmtInsertProveedor->execute([1, $rucproveedor, $proveedor, '', '', '', '', 2, date('Y-m-d H:i:s')]);
+            $tipo_doc = strlen($rucproveedor) == 11 ? 6 : 1;
+            $stmtInsertPersona->execute([$tipo_doc, $rucproveedor, $proveedor, '', '', '', '', date('Y-m-d H:i:s')]);
+            $idpersona = $conn->lastInsertId();
+            $stmtInsertCliente->execute([$idpersona, 1, '']);
             $idproveedor = $conn->lastInsertId();
         }
 
@@ -136,7 +141,7 @@ try {
             $idunidad = $unidadExistente['id'];
         }
 
-        $codigoExistente = !empty($fields[16]) ? $fields[16] : null;
+        $codigoExistente = !empty($fields[17]) ? $fields[17] : null;
         $barcode = obtenerCodigoBarrasUnicoXls($conn, $codigoExistente);
 
         $productData = [
@@ -147,20 +152,22 @@ try {
             'description'     => '',
             'principio_activo'=> trim($fields[2]),
             'presentation'    => trim($fields[3]),
-            'stock'           => !empty($fields[8]) ? (int)$fields[8] : 0,
+            'stock'           => !empty($fields[9]) ? (int)$fields[9] : 0,
             'is_stock'        => 1,
             'inventary_min'   => 10,
-            'price_in'        => !empty($fields[11]) ? (float)str_replace(['S/', ' ', ','], ['', '', ''], $fields[11]) : 0,
-            'price_out'       => !empty($fields[14]) ? (float)str_replace(['S/', ' ', ','], ['', '', ''], $fields[14]) : 0,
-            'price_may'       => !empty($fields[15]) ? (float)str_replace(['S/', ' ', ','], ['', '', ''], $fields[15]) : 0,
+            'price_in'        => !empty($fields[12]) ? (float)str_replace(['S/', ' ', ','], ['', '', ''], $fields[12]) : 0,
+            'price_out'       => !empty($fields[15]) ? (float)str_replace(['S/', ' ', ','], ['', '', ''], $fields[15]) : 0,
+            'price_may'       => !empty($fields[16]) ? (float)str_replace(['S/', ' ', ','], ['', '', ''], $fields[16]) : 0,
             'unit'            => $idunidad,
             'user_id'         => $_SESSION['user_id'],
             'category_id'     => 1,
-            'fecha_venc'      => !empty($fields[6]) ? $fields[6] : null,
+            'fecha_venc'      => !empty($fields[7]) ? $fields[7] : null,
             'laboratorio'     => !empty($fields[4]) ? trim($fields[4]) : '-',
             'reg_san'         => !empty($fields[5]) ? trim($fields[5]) : '-',
             'created_at'      => date('Y-m-d H:i:s'),
-            'is_active'       => 1
+            'is_active'       => 1,
+            'is_controlled'   => (!empty($fields[22]) && strtoupper(trim($fields[22])) === 'SI') ? 1 : 0,
+            'anaquel'         => trim($fields[23] ?? '')
         ];
 
         $stmtSelectProducto->execute([$barcode]);
@@ -171,6 +178,7 @@ try {
                 $productData['stock'], $productData['price_in'], $productData['price_out'],
                 $productData['price_may'], $productData['fecha_venc'], $productData['user_id'],
                 $productData['reg_san'], $productData['cod_digemid'], $productData['principio_activo'],
+                $productData['is_controlled'], $productData['anaquel'],
                 $productoExistente['id']
             ]);
             $idproducto = $productoExistente['id'];
@@ -182,12 +190,13 @@ try {
                 $productData['price_may'], $productData['unit'], $productData['presentation'],
                 $productData['user_id'], $productData['category_id'], $productData['fecha_venc'],
                 $productData['laboratorio'], $productData['reg_san'], $productData['created_at'],
-                $productData['is_active'], $productData['cod_digemid'], $productData['principio_activo']
+                $productData['is_active'], $productData['cod_digemid'], $productData['principio_activo'],
+                $productData['is_controlled'], $productData['anaquel']
             ]);
             $idproducto = $conn->lastInsertId();
         }
 
-        $comprobante_input = trim($fields[12]);
+        $comprobante_input = trim($fields[13] ?? '');
         $parts  = explode('-', $comprobante_input);
         $serie  = trim($parts[0] ?? '');
         $numcom = trim($parts[1] ?? '');
@@ -198,14 +207,14 @@ try {
         if ($compraExistente) {
             $idcompra = $compraExistente['id'];
         } else {
-            $fechcompra = trim($fields[20]);
+            $fechcompra = trim($fields[21] ?? '');
             $fecha_emi  = date('Y-m-d');
             if (!empty($fechcompra)) {
                 $fechaObj = DateTime::createFromFormat('d/m/Y', $fechcompra);
                 if ($fechaObj !== false) $fecha_emi = $fechaObj->format('Y-m-d');
             }
-            $nro_guia    = trim($fields[13] ?? '');
-            $sede        = trim($fields[19] ?? '');
+            $nro_guia    = trim($fields[14] ?? '');
+            $sede        = trim($fields[20] ?? '');
             $observacion = "GUIA: $nro_guia | SEDE: $sede";
 
             $stmtInsertCompra->execute([
@@ -231,28 +240,49 @@ try {
             ]);
         }
 
-        $numLote = !empty($fields[9]) ? trim($fields[9]) : 'S/L';
+        $numLote = !empty($fields[10]) ? trim($fields[10]) : 'S/L';
         $stmtSelectLoteExistente->execute([$idproducto, $numLote, $idcompra]);
         $loteExistente = $stmtSelectLoteExistente->fetch(PDO::FETCH_ASSOC);
         $fechaVencimiento = !empty($productData['fecha_venc']) ? $productData['fecha_venc'] : null;
+        $fechaFabricacion = !empty($fields[6]) ? date('Y-m-d', strtotime(str_replace('/', '-', $fields[6]))) : null;
         if (!$loteExistente) {
             $stmtInsertLote->execute([
                 $idproducto,
                 $numLote,
                 $idcompra,
                 $_SESSION['user_id'],
+                $fechaFabricacion,
                 $fechaVencimiento,
                 $productData['stock'],
                 $productData['stock'],
-                $productData['price_in']
+                $productData['price_in'],
+                $idproveedor
             ]);
+            $currentLoteId = $conn->lastInsertId();
         } else {
             $stmtUpdateLote->execute([
                 $productData['stock'],
                 $productData['stock'],
+                $fechaFabricacion,
                 $fechaVencimiento,
                 $productData['price_in'],
+                $idproveedor,
                 $loteExistente['id']
+            ]);
+            $currentLoteId = $loteExistente['id'];
+        }
+
+        // Insertar movimiento de lote (necesita el ID de operación)
+        $stmtSelectOperacion->execute([$idproducto, $idcompra]);
+        $opFinal = $stmtSelectOperacion->fetch(PDO::FETCH_ASSOC);
+        if ($opFinal && $productData['stock'] > 0) {
+            $stmtInsertLoteMovimiento->execute([
+                $currentLoteId,
+                $idproducto,
+                $opFinal['id'],
+                $productData['stock'],
+                $productData['price_in'],
+                $_SESSION['user_id']
             ]);
         }
 

@@ -8,11 +8,11 @@
  * Para regenerar: php generate_template.php
  */
 
-$filePath = dirname(__FILE__, 4) . '/assets/templates/plantilla_productos.xlsx';
-
-if (!file_exists($filePath)) {
+clearstatcache();
+$filePath = realpath(dirname(__FILE__) . '/../../../assets/templates/plantilla_productos.xlsx');
+if (!$filePath || !file_exists($filePath)) {
   http_response_code(404);
-  echo 'Plantilla no encontrada. Ejecute: php generate_template.php';
+  echo 'Plantilla no encontrada en: ' . (dirname(__FILE__) . '/../../../assets/templates/plantilla_productos.xlsx') . '. Ejecute: php generate_template.php';
   exit;
 }
 

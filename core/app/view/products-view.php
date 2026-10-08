@@ -63,6 +63,8 @@
 				<div class="row" style="display: flex; justify-content: center;">
 					<div class="col-md-10">
 						<?php
+						$currentUser = UserData::getById($_SESSION['user_id'] ?? 0);
+						$isAdmin = $currentUser && $currentUser->is_admin == 1;
 						$products = OperationData::getProductsWithMovement();
 						if (count($products) > 0) { ?>
 							<table class="table table-bordered table-striped table-hover table-sm datatable" id="gridProducts" style="width:100%">
@@ -77,6 +79,7 @@
 										<!-- <th class="text-center">Anaquel</th> -->
 										<th class="text-center bg-info">Stock Real</th>
 										<th class="text-center">Min.</th>
+										<?php if($isAdmin): ?><th>Sucursal</th><?php endif; ?>
 										<th class="text-center">Acciones</th>
 									</tr>
 								</thead>
@@ -108,6 +111,7 @@
 											<?=number_format($product->stock_real, 0)?>
 										</td>
 										<td class="text-center text-muted"><?=$product->inventary_min?></td>
+										<?php if($isAdmin): ?><td><small class="badge badge-primary"><?=$product->sucursal_nombre ?? 'Principal'?></small></td><?php endif; ?>
 										<td class="text-center">
 											<div class="btn-group">
 												<button class="btn btn-xs btn-warning edit-product shadow-sm" data-id="<?=$product->id?>" title="Editar">
@@ -256,6 +260,7 @@ $fecha_actual = date("Y-m-d");
 <script>
     var categories = <?php echo json_encode($categories); ?>;
 	var unidades = <?php echo json_encode($unidades); ?>;
+	var sucursalesList = <?php echo json_encode(SucursalData::getAll(true)); ?>;
 	var fechaVencimiento = '<?= date("Y-m-d", strtotime($fecha_actual . "+ 1 year")) ?>';
 
     $('#btn_sync_stock').click(function(e) {
