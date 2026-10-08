@@ -38,6 +38,9 @@ class OperationData
 	public $igv_tipo;
 
 	// Dynamic properties to prevent PHP 8.2+ dynamic property deprecation warnings
+	public $created_by;
+	public $updated_at;
+	public $updated_by;
 	public $image;
 	public $inventary_min;
 	public $is_stock;
@@ -800,9 +803,13 @@ class OperationData
                     p.price_out,
                     p.laboratorio,
                     p.anaquel,
-                    p.is_active
+                    p.is_active,
+                    p.sucursal_id,
+                    s.nombre as sucursal_nombre
                 FROM product p
+                LEFT JOIN sucursal s ON p.sucursal_id = s.id
                 WHERE p.is_active = 1
+                " . ProductData::getSucursalFilter() . "
                 ORDER BY p.name ASC";
 
 		$query = Executor::doit($sql);
@@ -827,9 +834,13 @@ class OperationData
                     p.laboratorio,
                     p.anaquel,
                     p.is_active,
-                    p.fecha_venc
+                    p.fecha_venc,
+                    p.sucursal_id,
+                    s.nombre as sucursal_nombre
                 FROM product p
+                LEFT JOIN sucursal s ON p.sucursal_id = s.id
                 WHERE p.is_active = 1
+                " . ProductData::getSucursalFilter() . "
                 AND EXISTS (SELECT 1 FROM operation op WHERE op.product_id = p.id AND op.estado = 1)
                 ORDER BY p.name ASC";
 

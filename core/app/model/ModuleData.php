@@ -9,6 +9,10 @@ class ModuleData {
     public $parent_id;
     public $is_active;
     public $sort_order;
+    public $created_at;
+    public $created_by;
+    public $updated_at;
+    public $updated_by;
 
 	public function ModuleData(){
 		$this->name = "";

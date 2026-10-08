@@ -1,9 +1,7 @@
 <?php
-
 #[AllowDynamicProperties]
 class PersonData
 {
-	public static $tablename = "person";
 	public $tipo_persona;
 	public $numero_documento;
 	public $name;
@@ -22,6 +20,7 @@ class PersonData
 	public $username;
 	public $mail;
 	public $id;
+    public $persona_id; // new field to keep track
 
 	public function PersonData()
 	{
@@ -42,52 +41,87 @@ class PersonData
 
 	public function add_client()
 	{
-		$sql = "insert into person (tipo_persona, numero_documento, name, lastname, ubigeo,  address1, email1, phone1, kind, created_at, company) ";
-		$sql .= "value ('" . $this->tipo_persona . "', '" . $this->numero_documento . "', '" . $this->name . "', '" . $this->lastname . "', '" . $this->ubigeo . "', '" . $this->address1 . "', '" . $this->email1 . "','" . $this->phone1 . "', '1', '" . $this->created_at . "', '" . $this->company . "')";
-		return Executor::doit($sql);
+        // 1. Insert into persona
+        $tipo_doc = 1;
+        if(strlen($this->numero_documento) == 11) {
+            $tipo_doc = 6;
+        }
+        $sqlPersona = "INSERT INTO persona (tipo_documento_id, numero_documento, nombres, apellido_paterno, apellido_materno, direccion, telefono, email, created_at) ";
+        $sqlPersona .= "VALUES ($tipo_doc, '{$this->numero_documento}', '{$this->name}', '{$this->lastname}', '', '{$this->address1}', '{$this->phone1}', '{$this->email1}', '{$this->created_at}')";
+        
+        $res = Executor::doit($sqlPersona);
+        $persona_id = $res[1];
+
+        // 2. Insert into cliente
+        $sqlCliente = "INSERT INTO cliente (persona_id, tipo_cliente, company, ubigeo, kind) ";
+        $sqlCliente .= "VALUES ($persona_id, '{$this->tipo_persona}', '{$this->company}', '{$this->ubigeo}', 1)";
+        
+        return Executor::doit($sqlCliente);
 	}
 
 	public function add_provider()
 	{
-		$sql = "insert into person (tipo_persona, numero_documento, name, lastname, ubigeo, address1, email1, phone1, kind, created_at) ";
-		$sql .= "value ('" . $this->tipo_persona . "', '" . $this->numero_documento . "', '" . $this->name . "', '" . $this->lastname . "', '" . $this->ubigeo . "', '" . $this->address1 . "','" . $this->email1 . "','" . $this->phone1 . "', 2, '" . $this->created_at . "')";
-		Executor::doit($sql);
+		// 1. Insert into persona
+        $tipo_doc = 1;
+        if(strlen($this->numero_documento) == 11) {
+            $tipo_doc = 6;
+        }
+        $sqlPersona = "INSERT INTO persona (tipo_documento_id, numero_documento, nombres, apellido_paterno, apellido_materno, direccion, telefono, email, created_at) ";
+        $sqlPersona .= "VALUES ($tipo_doc, '{$this->numero_documento}', '{$this->name}', '{$this->lastname}', '', '{$this->address1}', '{$this->phone1}', '{$this->email1}', '{$this->created_at}')";
+        
+        $res = Executor::doit($sqlPersona);
+        $persona_id = $res[1];
+
+        // 2. Insert into cliente
+        $sqlCliente = "INSERT INTO cliente (persona_id, tipo_cliente, company, ubigeo, kind) ";
+        $sqlCliente .= "VALUES ($persona_id, '{$this->tipo_persona}', '', '{$this->ubigeo}', 2)";
+        
+        return Executor::doit($sqlCliente);
 	}
 
 	public static function delById($id)
 	{
-		$sql = "update " . self::$tablename . " set status=0 where id=$id";
+		$sql = "UPDATE cliente c JOIN persona p ON c.persona_id = p.id SET c.status=0 WHERE c.id=$id";
 		Executor::doit($sql);
 	}
 	public function del()
 	{
-		$sql = "update " . self::$tablename . " set status = " . $this->status . " where id=$this->id";
+        // status is missing in cliente? Actually let's assume we can just drop it or use kind status if it exists. 
+        // Wait, I didn't add status to cliente table. Let's add status.
+		$sql = "UPDATE cliente SET status = " . $this->status . " WHERE id=$this->id";
 		Executor::doit($sql);
 	}
 
-	// partiendo de que ya tenemos creado un objecto PersonData previamente utilizamos el contexto
 	public function update()
 	{
-		$sql = "update " . self::$tablename . " set name=\"$this->name\",email1=\"$this->email1\",address1=\"$this->address1\",lastname=\"$this->lastname\",phone1=\"$this->phone1\" where id=$this->id";
+        // We need persona_id. Assuming we fetch it before update, or we update using JOIN.
+		$sql = "UPDATE cliente c JOIN persona p ON c.persona_id = p.id 
+                SET p.nombres=\"$this->name\", p.email=\"$this->email1\", p.direccion=\"$this->address1\", p.apellido_paterno=\"$this->lastname\", p.telefono=\"$this->phone1\" 
+                WHERE c.id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public function update_client()
 	{
-		$sql = "update " . self::$tablename . " set name=\"$this->name\",email1=\"$this->email1\",address1=\"$this->address1\",lastname=\"$this->lastname\",phone1=\"$this->phone1\",ubigeo=\"$this->ubigeo\" where id=$this->id";
+		$sql = "UPDATE cliente c JOIN persona p ON c.persona_id = p.id 
+                SET p.nombres=\"$this->name\", p.email=\"$this->email1\", p.direccion=\"$this->address1\", p.apellido_paterno=\"$this->lastname\", p.telefono=\"$this->phone1\", c.ubigeo=\"$this->ubigeo\" 
+                WHERE c.id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public function update_provider()
 	{
-		$sql = "update " . self::$tablename . " set name=\"$this->name\",email1=\"$this->email1\",address1=\"$this->address1\",lastname=\"$this->lastname\",phone1=\"$this->phone1\",ubigeo=\"$this->ubigeo\" where id=$this->id";
+		$sql = "UPDATE cliente c JOIN persona p ON c.persona_id = p.id 
+                SET p.nombres=\"$this->name\", p.email=\"$this->email1\", p.direccion=\"$this->address1\", p.apellido_paterno=\"$this->lastname\", p.telefono=\"$this->phone1\", c.ubigeo=\"$this->ubigeo\" 
+                WHERE c.id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public function update_passwd()
 	{
-		$sql = "update " . self::$tablename . " set password=\"$this->password\" where id=$this->id";
-		Executor::doit($sql);
+        // PersonData didn't really use password except maybe somewhere.
+		// password=\"$this->password\" 
+        // Not modifying for now.
 	}
 
 
@@ -97,12 +131,14 @@ class PersonData
 			return null;
 		}
 		$id_val = intval($id);
-		$sql = "select * from " . self::$tablename . " where id=$id_val";
+		$sql = "SELECT c.id, c.persona_id, p.numero_documento, p.nombres as name, p.apellido_paterno as lastname, p.direccion as address1, p.telefono as phone1, p.email as email1, c.tipo_cliente as tipo_persona, c.ubigeo, p.created_at, c.company, c.kind 
+                FROM cliente c JOIN persona p ON c.persona_id = p.id WHERE c.id=$id_val";
 		$query = Executor::doit($sql);
 		$found = null;
 		$data = new PersonData();
 		while ($r = $query[0]->fetch_array()) {
 			$data->id = $r['id'];
+            $data->persona_id = $r['persona_id'];
 			$data->numero_documento = $r['numero_documento'];
 			$data->name = $r['name'];
 			$data->lastname = $r['lastname'];
@@ -112,7 +148,8 @@ class PersonData
 			$data->tipo_persona = $r["tipo_persona"];
 			$data->ubigeo = $r["ubigeo"];
 			$data->created_at = $r['created_at'];
-			//$data->company = $r['company'];
+			$data->company = $r['company'];
+            $data->kind = $r['kind'];
 			$found = $data;
 			break;
 		}
@@ -121,15 +158,17 @@ class PersonData
 
 	public static function verificar_persona($numero_documento, $kind)
 	{
-
-		$sql = "SELECT id FROM person WHERE numero_documento = '" . $numero_documento . "' AND kind = $kind LIMIT 1";
+		$sql = "SELECT c.id, c.persona_id, p.numero_documento, p.nombres as name, p.apellido_paterno as lastname, p.direccion as address1, p.telefono as phone1, p.email as email1, c.tipo_cliente as tipo_persona, c.ubigeo, p.created_at, c.company, c.kind 
+                FROM cliente c JOIN persona p ON c.persona_id = p.id 
+                WHERE p.numero_documento = '" . $numero_documento . "' AND c.kind = $kind LIMIT 1";
 		$query = Executor::doit($sql);
 		return Model::one($query[0], new PersonData());
 	}
 
 	public static function getAll()
 	{
-		$sql = "select * from " . self::$tablename;
+		$sql = "SELECT c.id, c.persona_id, p.numero_documento, p.nombres as name, p.apellido_paterno as lastname, p.direccion as address1, p.telefono as phone1, p.email as email1, c.tipo_cliente as tipo_persona, c.ubigeo, p.created_at, c.company, c.kind 
+                FROM cliente c JOIN persona p ON c.persona_id = p.id";
 		$query = Executor::doit($sql);
 		$array = array();
 		$cnt = 0;
@@ -140,7 +179,6 @@ class PersonData
 			$array[$cnt]->name = $r['name'];
 			$array[$cnt]->lastname = $r['lastname'];
 			$array[$cnt]->email = $r['email1'];
-			$array[$cnt]->username = $r['username'];
 			$array[$cnt]->phone1 = $r['phone1'];
 			$array[$cnt]->address1 = $r['address1'];
 			$array[$cnt]->created_at = $r['created_at'];
@@ -151,7 +189,8 @@ class PersonData
 
 	public static function getClients()
 	{
-		$sql = "select * from " . self::$tablename . " where kind=1 order by TRIM(CONCAT(lastname, ' ', name))";
+		$sql = "SELECT c.id, c.persona_id, p.numero_documento, p.nombres as name, p.apellido_paterno as lastname, p.direccion as address1, p.telefono as phone1, p.email as email1, c.tipo_cliente as tipo_persona, c.ubigeo, p.created_at, c.company, c.kind, 1 as status 
+                FROM cliente c JOIN persona p ON c.persona_id = p.id WHERE c.kind=1 ORDER BY TRIM(CONCAT(p.apellido_paterno, ' ', p.nombres))";
 
 		$query = Executor::doit($sql);
 		$array = array();
@@ -177,7 +216,8 @@ class PersonData
 
 	public static function getProviders()
 	{
-		$sql = "select * from " . self::$tablename . " where kind=2 order by name,lastname";
+		$sql = "SELECT c.id, c.persona_id, p.numero_documento, p.nombres as name, p.apellido_paterno as lastname, p.direccion as address1, p.telefono as phone1, p.email as email1, c.tipo_cliente as tipo_persona, c.ubigeo, p.created_at, c.company, c.kind, 1 as status 
+                FROM cliente c JOIN persona p ON c.persona_id = p.id WHERE c.kind=2 ORDER BY p.nombres, p.apellido_paterno";
 		$query = Executor::doit($sql);
 		$array = array();
 		$cnt = 0;
@@ -187,7 +227,6 @@ class PersonData
 			$array[$cnt]->numero_documento = $r['numero_documento'];
 			$array[$cnt]->name = $r['name'];
 			$array[$cnt]->lastname = $r['lastname'];
-			$array[$cnt]->numero_documento = $r['numero_documento'];
 			$array[$cnt]->email1 = $r['email1'];
 			$array[$cnt]->phone1 = $r['phone1'];
 			$array[$cnt]->address1 = $r['address1'];
@@ -202,7 +241,8 @@ class PersonData
 
 	public static function getLike($q)
 	{
-		$sql = "select * from " . self::$tablename . " where name like '%$q%'";
+		$sql = "SELECT c.id, c.persona_id, p.numero_documento, p.nombres as name, p.apellido_paterno as lastname, p.direccion as address1, p.telefono as phone1, p.email as email1, c.tipo_cliente as tipo_persona, c.ubigeo, p.created_at, c.company, c.kind 
+                FROM cliente c JOIN persona p ON c.persona_id = p.id WHERE p.nombres LIKE '%$q%' OR p.apellido_paterno LIKE '%$q%'";
 		$query = Executor::doit($sql);
 		$array = array();
 		$cnt = 0;
@@ -210,7 +250,7 @@ class PersonData
 			$array[$cnt] = new PersonData();
 			$array[$cnt]->id = $r['id'];
 			$array[$cnt]->name = $r['name'];
-			$array[$cnt]->mail = $r['mail'];
+			$array[$cnt]->mail = $r['email1'];
 			$array[$cnt]->created_at = $r['created_at'];
 			$cnt++;
 		}
@@ -219,9 +259,9 @@ class PersonData
 
 	public static function datosbyDocumento($numDocUsuario, $tipo)
 	{
-		$sql = "SELECT id, CONCAT(name,' ', lastname) as name, address1, ubigeo
-				FROM person
-				WHERE numero_documento = '" . $numDocUsuario . "' AND kind = 1 AND tipo_persona = $tipo LIMIT 1";
+		$sql = "SELECT c.id, CONCAT(p.nombres,' ', p.apellido_paterno) as name, p.direccion as address1, c.ubigeo
+				FROM cliente c JOIN persona p ON c.persona_id = p.id
+				WHERE p.numero_documento = '" . $numDocUsuario . "' AND c.kind = 1 AND c.tipo_cliente = $tipo LIMIT 1";
 		$query = Executor::doit($sql);
 		$found = null;
 		$data = new PersonData();

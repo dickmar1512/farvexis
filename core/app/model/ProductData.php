@@ -30,6 +30,8 @@ class ProductData
 	public $cod_dig;
 	public $cod_digemid;
 	public $is_oficial;
+	public $sucursal_id;
+	public $is_controlled;
 
 	public function ProductData()
 	{
@@ -51,6 +53,20 @@ class ProductData
 		$this->principio_activo = "";
 		$this->fecha_venc = "";
 		$this->category_id = "";
+		$this->sucursal_id = $_SESSION['sucursal_id'] ?? 1;
+		$this->is_controlled = 0;
+	}
+
+	public static function getSucursalFilter() {
+		$filter = "";
+		if (isset($_SESSION['user_id'])) {
+			$user = UserData::getById($_SESSION['user_id']);
+			if ($user && $user->is_admin != 1) {
+				$sucursal_id = (int)($_SESSION['sucursal_id'] ?? 1);
+				$filter = " AND sucursal_id = $sucursal_id ";
+			}
+		}
+		return $filter;
 	}
 
 	public function getCategory()
@@ -60,15 +76,17 @@ class ProductData
 
 	public function add()
 	{
-		$sql = "insert into " . self::$tablename . " (barcode,name,description,price_in,price_may,price_out, stock, user_id,presentation,unit,category_id,inventary_min,created_at, is_stock,anaquel,principio_activo,fecha_venc,cod_digemid,laboratorio) ";
-		$sql .= "value (\"$this->barcode\",\"".addslashes((string)$this->name)."\",\"".addslashes((string)$this->description)."\",\"$this->price_in\",\"$this->price_may\",\"$this->price_out\", \"$this->stock\", $this->user_id,\"".addslashes((string)$this->presentation)."\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(), $this->is_stock,\"".addslashes((string)$this->anaquel)."\",\"".addslashes((string)$this->principio_activo)."\",\"$this->fecha_venc\",\"$this->cod_digemid\",\"".addslashes((string)$this->laboratorio)."\")";
+		$is_controlled = empty($this->is_controlled) ? 0 : 1;
+		$sql = "insert into " . self::$tablename . " (sucursal_id,barcode,name,description,price_in,price_may,price_out, stock, user_id,presentation,unit,category_id,inventary_min,created_at, is_stock,anaquel,principio_activo,fecha_venc,cod_digemid,laboratorio,is_controlled) ";
+		$sql .= "value ($this->sucursal_id,\"$this->barcode\",\"".addslashes((string)$this->name)."\",\"".addslashes((string)$this->description)."\",\"$this->price_in\",\"$this->price_may\",\"$this->price_out\", \"$this->stock\", $this->user_id,\"".addslashes((string)$this->presentation)."\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(), $this->is_stock,\"".addslashes((string)$this->anaquel)."\",\"".addslashes((string)$this->principio_activo)."\",\"$this->fecha_venc\",\"$this->cod_digemid\",\"".addslashes((string)$this->laboratorio)."\", $is_controlled)";
 		return Executor::doit($sql);
 	}
 
 	public function add_with_image()
 	{
-		$sql = "insert into " . self::$tablename . " (barcode,image,name,description,price_in,price_may,price_out,stock, user_id,presentation,unit,category_id,inventary_min,created_at, is_stock,anaquel,principio_activo,fecha_venc,cod_digemid,laboratorio) ";
-		$sql .= "value (\"$this->barcode\",\"$this->image\",\"".addslashes((string)$this->name)."\",\"".addslashes((string)$this->description)."\",\"$this->price_in\",\"$this->price_may\",\"$this->price_out\", \"$this->stock\", $this->user_id,\"".addslashes((string)$this->presentation)."\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(), $this->is_stock,\"".addslashes((string)$this->anaquel)."\",\"".addslashes((string)$this->principio_activo)."\",\"$this->fecha_venc\",\"$this->cod_digemid\",\"".addslashes((string)$this->laboratorio)."\")";
+		$is_controlled = empty($this->is_controlled) ? 0 : 1;
+		$sql = "insert into " . self::$tablename . " (sucursal_id,barcode,image,name,description,price_in,price_may,price_out,stock, user_id,presentation,unit,category_id,inventary_min,created_at, is_stock,anaquel,principio_activo,fecha_venc,cod_digemid,laboratorio,is_controlled) ";
+		$sql .= "value ($this->sucursal_id,\"$this->barcode\",\"$this->image\",\"".addslashes((string)$this->name)."\",\"".addslashes((string)$this->description)."\",\"$this->price_in\",\"$this->price_may\",\"$this->price_out\", \"$this->stock\", $this->user_id,\"".addslashes((string)$this->presentation)."\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(), $this->is_stock,\"".addslashes((string)$this->anaquel)."\",\"".addslashes((string)$this->principio_activo)."\",\"$this->fecha_venc\",\"$this->cod_digemid\",\"".addslashes((string)$this->laboratorio)."\", $is_controlled)";
 		return Executor::doit($sql);
 	}
 
@@ -87,6 +105,7 @@ class ProductData
 	// partiendo de que ya tenemos creado un objecto ProductData previamente utilizamos el contexto
 	public function update()
 	{
+		$is_controlled = empty($this->is_controlled) ? 0 : 1;
 		$sql = "update " . self::$tablename . " set 
             barcode=\"$this->barcode\",
             name=\"".addslashes((string)$this->name)."\",
@@ -105,7 +124,8 @@ class ProductData
             principio_activo=\"".addslashes((string)$this->principio_activo)."\",
             fecha_venc=\"$this->fecha_venc\",
             cod_digemid=\"$this->cod_digemid\",
-            laboratorio=\"".addslashes((string)$this->laboratorio)."\" 
+            laboratorio=\"".addslashes((string)$this->laboratorio)."\",
+            is_controlled=$is_controlled 
             where id=$this->id";
 		Executor::doit($sql);
 	}
@@ -196,9 +216,13 @@ class ProductData
 		Executor::doit($sql);
 	}
 
-	public static function getByDuplicate($cod_digemid, $barcode, $name)
+	public static function getByDuplicate($cod_digemid, $barcode, $name, $sucursal_id = null)
 	{
-		$sql = "select * from " . self::$tablename . " where (cod_digemid <> '' AND cod_digemid = \"$cod_digemid\") OR (barcode <> '' AND barcode = \"$barcode\") OR name = \"$name\" limit 1";
+		if ($sucursal_id === null) {
+			$sucursal_id = $_SESSION['sucursal_id'] ?? 1;
+		}
+		$filter = " AND sucursal_id = $sucursal_id ";
+		$sql = "select * from " . self::$tablename . " where ((cod_digemid <> '' AND cod_digemid = \"$cod_digemid\") OR (barcode <> '' AND barcode = \"$barcode\") OR name = \"$name\") $filter limit 1";
 		$query = Executor::doit($sql);
 		return Model::one($query[0], new ProductData());
 	}
@@ -209,19 +233,21 @@ class ProductData
 			return null;
 		}
 		$id_val = intval($id);
-		$sql = "select id,cod_digemid,image,barcode,name,principio_activo,description,stock,is_stock,inventary_min,price_in,price_out,unit,presentation,laboratorio,reg_san,user_id,category_id,created_at,fecha_venc,is_active,price_may,anaquel,is_may from " . self::$tablename . " where id=$id_val";
+		$filter = self::getSucursalFilter();
+		$sql = "select id,cod_digemid,image,barcode,name,principio_activo,description,stock,is_stock,inventary_min,price_in,price_out,unit,presentation,laboratorio,reg_san,user_id,category_id,created_at,fecha_venc,is_active,price_may,anaquel,is_may,is_controlled from " . self::$tablename . " where id=$id_val $filter";
 		$query = Executor::doit($sql);
 		return Model::one($query[0], new ProductData());
 	}
 
 	public static function getAlertasInventario()
 	{
+		$filter = self::getSucursalFilter();
 		$sql = "SELECT * 
 				FROM " . self::$tablename . "
 				WHERE stock <= inventary_min 
 				and is_stock =1 
 				and length(barcode) > 6 
-				and is_active=1
+				and is_active=1 $filter
 				and id in (select product_id from operation where operation_type_id = 1 group by product_id) 
 				order  by stock asc ";
 		$query = Executor::doit($sql);
@@ -230,43 +256,49 @@ class ProductData
 
 	public static function getAll()
 	{
-		$sql = "select * from " . self::$tablename . " where id in (select product_id from operation where operation_type_id = 1 group by product_id) order by stock desc";
+		$filter = self::getSucursalFilter();
+		$sql = "select * from " . self::$tablename . " where id in (select product_id from operation where operation_type_id = 1 group by product_id) $filter order by stock desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}
 
 	public static function getBarcode()
 	{
-		$sql = "select lpad(count(*)+1,6,0) barcode from " . self::$tablename;
+		$filter = self::getSucursalFilter();
+		$sql = "select lpad(count(*)+1,6,0) barcode from " . self::$tablename . " where 1=1 $filter";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}
 
 	public static function getAll2()
 	{
-		$sql = "select * from " . self::$tablename . " where stock > 0 and is_active = 1 order by id asc";
+		$filter = self::getSucursalFilter();
+		$sql = "select * from " . self::$tablename . " where stock > 0 and is_active = 1 $filter order by id asc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}
 
 	public static function getAllByPage($start_from, $limit)
 	{
-		$sql = "select * from " . self::$tablename . " where stock > 0 and id>=$start_from ORDER BY price_out limit $limit ";
+		$filter = self::getSucursalFilter();
+		$sql = "select * from " . self::$tablename . " where stock > 0 and id>=$start_from $filter ORDER BY price_out limit $limit ";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}
 
 	public static function getLike($p)
 	{
-		$sql = "select * from " . self::$tablename . " where is_active = 1 and (barcode like '%$p%' or name like '%$p%' or id like '%$p%' or principio_activo like '%$p%')";
+		$filter = self::getSucursalFilter();
+		$sql = "select * from " . self::$tablename . " where is_active = 1 $filter and (barcode like '%$p%' or name like '%$p%' or id like '%$p%' or principio_activo like '%$p%')";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}
 
 	public static function getLikeSinStock($p)
 	{
+		$filter = self::getSucursalFilter();
 		$sql = "select * from " . self::$tablename . " where 
-		is_stock = 1 and is_active=1 and (
+		is_stock = 1 and is_active=1 $filter and (
 		barcode like '%$p%' or 
 		name like '%$p%' or 
 		id like '%$p%' )
@@ -278,14 +310,16 @@ class ProductData
 
 	public static function getAllByUserId($user_id)
 	{
-		$sql = "select * from " . self::$tablename . " where user_id=$user_id order by created_at desc";
+		$filter = self::getSucursalFilter();
+		$sql = "select * from " . self::$tablename . " where user_id=$user_id $filter order by created_at desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}
 
 	public static function getAllByCategoryId($category_id)
 	{
-		$sql = "select * from " . self::$tablename . " where category_id=$category_id order by created_at desc";
+		$filter = self::getSucursalFilter();
+		$sql = "select * from " . self::$tablename . " where category_id=$category_id $filter order by created_at desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 	}

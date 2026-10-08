@@ -8,6 +8,8 @@ class UserAccessData {
     public $is_active;
     public $created_at;
     public $updated_at;
+    public $created_by;
+    public $updated_by;
 
 	public function UserAccessData(){
 		$this->user_id = "";

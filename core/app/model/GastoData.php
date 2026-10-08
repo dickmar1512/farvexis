@@ -8,6 +8,7 @@ class GastoData
     public $importe;
     public $fecha;
     public $usuario_id;
+    public $box_id;
 
     public function __construct()
     {
@@ -36,11 +37,41 @@ class GastoData
         return $array;
     }
 
-    // public static function getByUserId($user_id) {
-    //     $sql = "SELECT * FROM ".self::$tablename." WHERE usuario_id = ? ORDER BY fecha DESC";
-    //     $params = [$user_id];
-    //     return Model::getArray($sql, $params);
-    // }
+    public static function getGastosUnBoxed() {
+        $sql = "SELECT * FROM ".self::$tablename." WHERE box_id IS NULL AND estado = 1 ORDER BY fecha DESC";
+        $query = Executor::doit($sql);
+        $array = array();
+        $cnt = 0;
+        while($r = $query[0]->fetch_array()){
+            $array[$cnt] = new GastoData();
+            $array[$cnt]->id = $r['id'];
+            $array[$cnt]->descripcion = $r['descripcion'];
+            $array[$cnt]->comprobante = $r['comprobante'];
+            $array[$cnt]->importe = $r['importe'];
+            $array[$cnt]->fecha = $r['fecha'];
+            $array[$cnt]->usuario_id = $r['usuario_id'];
+            $cnt++;
+        }
+        return $array;
+    }
+
+    public static function getByBoxId($box_id) {
+        $sql = "SELECT * FROM ".self::$tablename." WHERE box_id = $box_id AND estado = 1";
+        $query = Executor::doit($sql);
+        $array = array();
+        $cnt = 0;
+        while($r = $query[0]->fetch_array()){
+            $array[$cnt] = new GastoData();
+            $array[$cnt]->id = $r['id'];
+            $array[$cnt]->descripcion = $r['descripcion'];
+            $array[$cnt]->comprobante = $r['comprobante'];
+            $array[$cnt]->importe = $r['importe'];
+            $array[$cnt]->fecha = $r['fecha'];
+            $array[$cnt]->usuario_id = $r['usuario_id'];
+            $cnt++;
+        }
+        return $array;
+    }
 
     public static function getByFilters($start_date, $end_date, $user_id = 0)
     {
@@ -98,7 +129,11 @@ class GastoData
                 useridupd = '" . $this->usuario_id . "' 
                 WHERE id = " . $this->id;
         return Executor::doit($sql);
-        ;
+    }
+
+    public function update_box() {
+        $sql = "UPDATE ".self::$tablename." SET box_id = ".$this->box_id." WHERE id = ".$this->id;
+        return Executor::doit($sql);
     }
 
     public function delete()

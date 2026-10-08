@@ -35,6 +35,8 @@ class SellData
 	public $codigo_hash;
 	public $fecha_envio_sunat;
 	public $fec_vencimiento;
+	public $medico_id;
+	public $paciente_id;
 
 	public function SellData()
 	{
@@ -72,8 +74,8 @@ class SellData
 		$cash_val = is_numeric($this->cash) ? $this->cash : 0;
 		$total_val = is_numeric($this->total) ? $this->total : 0;
 
-		$sql = "insert into " . self::$tablename . " (user_id, tipo_comprobante, serie, comprobante, total, cash, discount, created_at, estado, person_id, tipo_pago, forma_pago, fec_vencimiento) ";
-		$sql .= "value ($this->user_id, $this->tipo_comprobante, '" . $this->serie . "', '" . $this->comprobante . "', $total_val, $cash_val, $discount_val, '" . $this->created_at . "', 1, $person_id_val, $tipo_pago_val, $forma_pago_val, $fec_venc_val)";
+		$sql = "insert into " . self::$tablename . " (user_id, tipo_comprobante, serie, comprobante, total, cash, discount, created_at, estado, person_id, tipo_pago, forma_pago, fec_vencimiento, medico_id, paciente_id) ";
+		$sql .= "value ($this->user_id, $this->tipo_comprobante, '" . $this->serie . "', '" . $this->comprobante . "', $total_val, $cash_val, $discount_val, '" . $this->created_at . "', 1, $person_id_val, $tipo_pago_val, $forma_pago_val, $fec_venc_val, " . (!empty($this->medico_id) ? intval($this->medico_id) : "NULL") . ", " . (!empty($this->paciente_id) ? intval($this->paciente_id) : "NULL") . ")";
 		return Executor::doit($sql);
 	}
 
