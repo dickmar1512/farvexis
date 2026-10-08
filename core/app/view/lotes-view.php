@@ -69,7 +69,7 @@ function loteEsc($value): string
                 <table class="table table-bordered table-striped table-hover datatable" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Producto</th><th>Lote</th><th>Ingreso</th><th>Vencimiento</th>
+                            <th>Producto</th><th>Lote</th><th>F. Fabr.</th><th>Vencimiento</th><th>Ingreso</th>
                             <th class="text-right">Inicial</th><th class="text-right">Disponible</th>
                             <th>Estado</th><th>Ubicación</th><th class="text-center">Acciones</th>
                         </tr>
@@ -83,8 +83,9 @@ function loteEsc($value): string
                         <tr class="<?= $expired ? 'table-danger' : '' ?>">
                             <td><strong><?= loteEsc($lote['product_name']) ?></strong><br><small class="text-muted"><?= loteEsc($lote['barcode']) ?></small></td>
                             <td><?= loteEsc($lote['num_lot']) ?></td>
-                            <td><?= loteEsc($lote['fech_ing']) ?></td>
+                            <td><?= !empty($lote['fecha_fabricacion']) ? loteEsc($lote['fecha_fabricacion']) : 'Sin fecha' ?></td>
                             <td><?= $expiry ? loteEsc($expiry) : 'Sin fecha' ?></td>
+                            <td><?= loteEsc($lote['fech_ing']) ?></td>
                             <td class="text-right"><?= number_format((float)$lote['cantidad_inicial'], 3) ?></td>
                             <td class="text-right font-weight-bold"><?= number_format((float)$lote['cantidad_disponible'], 3) ?></td>
                             <td><span class="badge badge-<?= $badge ?>"><?= loteEsc($expired ? 'vencido' : $lote['estado']) ?></span></td>

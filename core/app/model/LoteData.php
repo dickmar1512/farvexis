@@ -131,7 +131,7 @@ class LoteData
 		return $remaining <= 0.000001;
 	}
 
-	public static function registerEntry($productId, $lotNumber, $quantity, $userId, $operationId = null, $expiryDate = null, $manufactureDate = null, $cost = null, $location = null)
+	public static function registerEntry($productId, $lotNumber, $quantity, $userId, $operationId = null, $expiryDate = null, $manufactureDate = null, $cost = null, $location = null, $proveedorId = null)
 	{
 		$db = Database::getCon();
 		$quantity = (float)$quantity;
@@ -147,15 +147,15 @@ class LoteData
 				$update = $db->prepare("UPDATE lote SET cantidad_inicial = cantidad_inicial + ?,
 					cantidad_disponible = cantidad_disponible + ?, fecha_vencimiento = COALESCE(?, fecha_vencimiento),
 					fecha_fabricacion = COALESCE(?, fecha_fabricacion), costo_unitario = COALESCE(?, costo_unitario),
-					ubicacion = COALESCE(?, ubicacion), estado = 'disponible', updated_at = NOW() WHERE id = ?");
-				$update->bind_param("ddssdsi", $quantity, $quantity, $expiryDate, $manufactureDate, $cost, $location, $lotId);
+					ubicacion = COALESCE(?, ubicacion), proveedor_id = COALESCE(?, proveedor_id), estado = 'disponible', updated_at = NOW() WHERE id = ?");
+				$update->bind_param("ddssdsii", $quantity, $quantity, $expiryDate, $manufactureDate, $cost, $location, $proveedorId, $lotId);
 				$update->execute();
 			} else {
 				$insert = $db->prepare("INSERT INTO lote
 					(id_prod, num_lot, fech_ing, user_id, fecha_fabricacion, fecha_vencimiento,
-					 cantidad_inicial, cantidad_disponible, costo_unitario, estado, ubicacion, created_at)
-					VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, 'disponible', ?, NOW())");
-				$insert->bind_param("isissddds", $productId, $lotNumber, $userId, $manufactureDate, $expiryDate, $quantity, $quantity, $cost, $location);
+					 cantidad_inicial, cantidad_disponible, costo_unitario, estado, ubicacion, proveedor_id, created_at)
+					VALUES (?, ?, NOW(), ?, ?, ?, ?, ?, ?, 'disponible', ?, ?, NOW())");
+				$insert->bind_param("isissdddsi", $productId, $lotNumber, $userId, $manufactureDate, $expiryDate, $quantity, $quantity, $cost, $location, $proveedorId);
 				$insert->execute();
 				$lotId = $db->insert_id;
 			}
