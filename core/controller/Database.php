@@ -23,6 +23,13 @@ class Database {
 		if(self::$con==null && self::$db==null){
 			self::$db = new Database();
 			self::$con = self::$db->connect();
+			if(session_status() === PHP_SESSION_NONE) {
+			    @session_start();
+			}
+			if(isset($_SESSION['user_id'])){
+			    $uid = (int)$_SESSION['user_id'];
+			    self::$con->query("SET @current_user_id = $uid");
+			}
 		}
 		return self::$con;
 	}

@@ -76,8 +76,11 @@ $(document).ready(function() {
             q: row.find('.re-q').val(),
             rs: row.find('.re-rs').val(),
             nl: row.find('.re-nl').val(),
+            fec_fab: row.find('.re-fec-fab').val(),
             fec_venc: row.find('.re-fec-venc').val(),
-            labo: row.find('.re-labo').val()
+            labo: row.find('.re-labo').val(),
+            anaquel: row.find('.re-anaquel').val(),
+            is_controlled: row.find('.re-controlled').is(':checked') ? 1 : 0
         };
 
         if (!data.q || data.q <= 0) {
@@ -106,11 +109,11 @@ $(document).ready(function() {
                         toast: true
                     });
                     refreshReCart();
-                    // Clear search
-                    $("#product_code2").val("").focus();
-                    $("#search-results-container").fadeOut(300, function() {
-                        $(this).html("").show();
-                    });
+                    // Clear search in modal
+                    if ($("#product_code_re").length) {
+                        $("#product_code_re").val("").focus();
+                        $("#show_search_results_re").html("");
+                    }
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -133,10 +136,4 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
-    $('#product_code2').focus();
-
-    // Botón agregar manual (F1)
-    $("#btnAgregarReManual").click(function() {
-        $("#product_code2").focus();
-    });
 });

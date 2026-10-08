@@ -7,7 +7,10 @@ if (!isset($_SESSION["reabastecer"])) {
         "rs" => $_POST['rs'],
         "nl" => $_POST['nl'],
         "labo" => $_POST['labo'],
-        "fec_venc" => $_POST["fec_venc"]
+        "fec_fab" => $_POST["fec_fab"] ?? null,
+        "fec_venc" => $_POST["fec_venc"],
+        "anaquel" => $_POST["anaquel"] ?? '',
+        "is_controlled" => $_POST["is_controlled"] ?? 0
     );
     $_SESSION["reabastecer"] = array($product);
 } else {
@@ -37,7 +40,10 @@ if (!isset($_SESSION["reabastecer"])) {
             "rs" => $_POST['rs'],
             "nl" => $_POST['nl'],
             "labo" => $_POST['labo'],
-            "fec_venc" => $_POST["fec_venc"]
+            "fec_fab" => $_POST["fec_fab"] ?? null,
+            "fec_venc" => $_POST["fec_venc"],
+            "anaquel" => $_POST["anaquel"] ?? '',
+            "is_controlled" => $_POST["is_controlled"] ?? 0
         );
         $cart[$nc] = $product;
         $_SESSION["reabastecer"] = $cart;

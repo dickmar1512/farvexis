@@ -9,6 +9,19 @@ function refreshCart() {
             // Get total from the first hidden input with class js_total_val
             const newTotal = $(".js_total_val").first().val() || 0;
             $("#money, #money2, #money3").val(newTotal);
+
+            let hasControlled = $('.cart_has_controlled').first().val() == '1';
+            let controlledNames = $('.controlled_names').first().val();
+            
+            if (hasControlled) {
+                $('.recipe-section').slideDown();
+                $('.recipe-products-list').text('Aplica para: ' + controlledNames);
+                $('.recipe-section input').prop('required', true);
+            } else {
+                $('.recipe-section').slideUp();
+                $('.recipe-products-list').text('');
+                $('.recipe-section input').prop('required', false);
+            }
         },
         error: function() {
             console.error("Error refreshing cart");
@@ -55,6 +68,15 @@ function clearCart() {
 $(document).ready(function() {
     const initialTotal = $(".js_total_val").first().val() || 0;
     $('#money, #money2, #money3').val(initialTotal);
+
+    // Initial check for controlled products
+    let hasControlled = $('.cart_has_controlled').first().val() == '1';
+    let controlledNames = $('.controlled_names').first().val();
+    if (hasControlled) {
+        $('.recipe-section').show();
+        $('.recipe-products-list').text('Aplica para: ' + controlledNames);
+        $('.recipe-section input').prop('required', true);
+    }
 });
 
 $(document).on('click', '#btnAgregarItem, #btnAgregarItem2, #btnAgregarItem3, #btnAgregarItemCentral', agregarProducto);
@@ -537,4 +559,73 @@ function toggleCredito(val, tipo) {
     } else {
         $('#vencimiento_' + tipo).slideUp();
     }
+}
+
+function openModalPaciente(idx) {
+    $('#modalPersonaTitle').text('Nuevo Paciente');
+    $('#modal_role').val('cliente');
+    $('#modal_target_idx').val(idx);
+    $('#group_doc').show();
+    $('#group_cmp').hide();
+    $('#modal_nombres').val($('#paciente_nombre_' + idx).val());
+    $('#modal_documento').val($('#paciente_dni_' + idx).val());
+    $('#modal_apellidos').val('');
+    $('#modalCrearPersona').modal('show');
+}
+
+function openModalMedico(idx) {
+    $('#modalPersonaTitle').text('Nuevo Médico');
+    $('#modal_role').val('medico');
+    $('#modal_target_idx').val(idx);
+    $('#group_doc').hide();
+    $('#group_cmp').show();
+    $('#modal_nombres').val($('#medico_nombre_' + idx).val());
+    $('#modal_cmp').val($('#medico_cmp_' + idx).val());
+    $('#modal_apellidos').val('');
+    $('#modalCrearPersona').modal('show');
+}
+
+function openModalClienteNV() {
+    $('#modalPersonaTitle').text('Nuevo Cliente');
+    $('#modal_role').val('cliente');
+    $('#modal_target_idx').val('nv');
+    $('#group_doc').show();
+    $('#group_cmp').hide();
+    $('#modal_nombres').val('');
+    $('#modal_documento').val('');
+    $('#modal_apellidos').val('');
+    $('#modalCrearPersona').modal('show');
+}
+
+function savePersonaAjax(e) {
+    e.preventDefault();
+    var formData = $('#formCrearPersona').serialize();
+    $.post('./?action=addpersonajax', formData, function(response) {
+        if (response.success) {
+            var role = $('#modal_role').val();
+            var idx = $('#modal_target_idx').val();
+            
+            if (role === 'cliente') {
+                if (idx === 'nv') {
+                    $('#nv_client_id').append(new Option(response.name, response.id, true, true));
+                } else {
+                    $('#paciente_nombre_' + idx).val(response.name);
+                    $('#paciente_dni_' + idx).val(response.doc);
+                }
+            } else if (role === 'medico') {
+                $('#medico_nombre_' + idx).val(response.name);
+                $('#medico_cmp_' + idx).val(response.cmp);
+            }
+            
+            $('#modalCrearPersona').modal('hide');
+            Swal.fire({
+                icon: 'success',
+                title: 'Guardado correctamente',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        } else {
+            Swal.fire('Error', response.message, 'error');
+        }
+    }, 'json');
 }

@@ -116,6 +116,10 @@ function openProductModal(action, productData = null) {
                                     <input type="checkbox" class="custom-control-input" id="is_may" name="is_may" ${(productData && productData.is_may==1) ? 'checked' : ''}>
                                     <label class="custom-control-label text-xs" for="is_may">Venta x Mayor</label>
                                 </div>
+                                <div class="custom-control custom-switch mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="is_controlled" name="is_controlled" ${(productData && productData.is_controlled==1) ? 'checked' : ''}>
+                                    <label class="custom-control-label text-xs" for="is_controlled">Producto Controlado</label>
+                                </div>
                             </div>
                             <div class="mt-3">
                                 <label class="text-xs d-block mb-1">Imagen del Producto</label>
@@ -247,3 +251,4 @@ $(document).on('click', '.delete-product', function (e) {
         }
     });
 });
+
