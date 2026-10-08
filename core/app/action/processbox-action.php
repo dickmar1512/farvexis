@@ -4,9 +4,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     
     try {
         $sells = SellData::getSellsUnBoxed();
+        $gastos = GastoData::getGastosUnBoxed();
         
-        if (count($sells) == 0) {
-            throw new Exception("No hay ventas para procesar");
+        if (count($sells) == 0 && count($gastos) == 0) {
+            throw new Exception("No hay ventas ni gastos para procesar");
         }
         
         // Procesar caja
@@ -44,12 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             $sell->update_box();
             $totalBox += $sell->total - $impNotaCredito;
         }
+
+        $totalGastosBox = 0;
+        foreach($gastos as $gasto) {
+            $gasto->box_id = $b[1];
+            $gasto->update_box();
+            $totalGastosBox += $gasto->importe;
+        }
+        
+        // Restar los gastos del total de la caja
+        $totalBox -= $totalGastosBox;
         
         // Enviar correo
         $arraddress = $arrAddcc = array();
-        $arraddress[] = 'juan.irene@kalpg.com';
-        $arrAddcc[] = 'sagitatario.1982@gmail.com';
-        $arrAddcc[] = 'mayaya.ocampo@gmail.com';
         $asunto = "Cierre caja por Limite de efectivo en caja";
         
         $mailer = new CLSPHPMailer();

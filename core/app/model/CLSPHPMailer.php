@@ -44,12 +44,32 @@ class CLSPHPMailer
 	 * @param string $pie
 	 * @param string $firma
 	 * @param array|null $atachar
+	 * @param array $arrAddbcc
 	 * @return bool
 	 */
 
-	public function fnMail($arraddress, $arrAddcc, $asunto, $cuerpohTML, $pie = 'pie', $firma = '', $atachar = null)
+	public function fnMail($arraddress, $arrAddcc, $asunto, $cuerpohTML, $pie = 'pie', $firma = '', $atachar = null, $arrAddbcc = array())
 	{
 		try {
+			// Cargar correos configurados en el sistema
+			if (class_exists('EmailConfigData')) {
+				$configuredEmails = EmailConfigData::getActives();
+				foreach ($configuredEmails as $cEmail) {
+					if ($cEmail->type == 'to') {
+						$arraddress[] = $cEmail->email;
+					} elseif ($cEmail->type == 'cc') {
+						$arrAddcc[] = $cEmail->email;
+					} elseif ($cEmail->type == 'bcc') {
+						$arrAddbcc[] = $cEmail->email;
+					}
+				}
+			}
+
+			// Eliminar duplicados y vacíos
+			$arraddress = array_unique(array_filter($arraddress));
+			$arrAddcc = array_unique(array_filter($arrAddcc));
+			$arrAddbcc = array_unique(array_filter($arrAddbcc));
+
 			// Configuración SMTP
 			$this->objMail->isSMTP();
 			$this->objMail->Host = $this->host;
@@ -74,6 +94,11 @@ class CLSPHPMailer
 			// CC
 			foreach ($arrAddcc as $email) {
 				$this->objMail->addCC(trim($email));
+			}
+
+			// CCO (BCC)
+			foreach ($arrAddbcc as $email) {
+				$this->objMail->addBCC(trim($email));
 			}
 
 			// Contenido

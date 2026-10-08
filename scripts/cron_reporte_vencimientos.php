@@ -786,8 +786,8 @@ $cuerpo .= "<p style='margin-top:20px; font-size:12px; color:#888;'>
 </p>";
 
 // ── Enviar correo con PDF y Excel adjuntos ────────────────────────────────────
-$arraddress = ['juan.irene@kalpg.com'];
-$arrAddcc   = ['sagitatario.1982@gmail.com', 'mayaya.ocampo@gmail.com'];
+$arraddress = [];
+$arrAddcc   = [];
 $asunto     = "REPORTE DE VENCIMIENTOS [" . date('d/m/Y') . "] — {$tipo_ejecucion} — {$total_alertas} producto(s) con alerta";
 
 $firma  = '<tr><td class="sub_pie">BOTICA ALFONZO UGARTE</td></tr>';

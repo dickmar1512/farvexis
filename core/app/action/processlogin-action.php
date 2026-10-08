@@ -27,7 +27,9 @@ $pass = sha1(md5($_POST['password']));
 
 $base = new Database();
 $con = $base->connect();
-$sql = "SELECT * FROM user WHERE (email= \"".$user."\" OR username= \"".$user."\") AND password= \"".$pass."\" AND is_active=1";
+$sql = "SELECT u.*, p.email, p.nombres as name, p.apellido_paterno as lastname 
+        FROM user u JOIN persona p ON u.persona_id = p.id 
+        WHERE (p.email= \"".$user."\" OR u.username= \"".$user."\") AND u.password= \"".$pass."\" AND u.is_active=1";
 $query = $con->query($sql);
 $found = false;
 $userid = null;
@@ -35,6 +37,7 @@ $userid = null;
 while($r = $query->fetch_array()){
     $found = true;
     $userid = $r['id'];
+    $sucursalid = $r['sucursal_id'] ?? 1;
     $datosUsuario = $r['name'] . " " . $r['lastname'];
     $usuario = $r['username'];
     $fechaIngreso = date("Y-m-d H:i:s");
@@ -42,14 +45,10 @@ while($r = $query->fetch_array()){
 
 if($found) {
     $_SESSION['user_id'] = $userid;
-	$_SESSION['sucursal_id'] = (int)($r['sucursal_id'] ?? 1);
+	$_SESSION['sucursal_id'] = (int)$sucursalid;
     
     // Enviar correo (puedes mover esto a un proceso en segundo plano si es muy lento)
     $arraddress = $arrAddcc = array();
-    //$arraddress[] = 'juan.irene@kalpg.com';
-    $arraddress[] = 'dick_mar@hotmail.com';
-    $arrAddcc[] = 'sagitatario.1982@gmail.com';
-    //$arrAddcc[] = 'mayaya.ocampo@gmail.com';
     $asunto = "Acceso al sistema CAREPHARM";
     
     $mailer = new CLSPHPMailer();

@@ -189,8 +189,8 @@ $pdfPath = "storage/Reporte_Mensual_Ventas.pdf";
 $pdf->Output('F', $pdfPath);
 
 // 4. Preparar el HTML del correo
-$arraddress = array('juan.irene@kalpg.com');
-$arrAddcc = array('sagitatario.1982@gmail.com', 'mayaya.ocampo@gmail.com');
+$arraddress = array();
+$arrAddcc = array();
 $asunto = "REPORTE DE VENTAS MENSUALES COMPARATIVO (Ultimos 12 Meses)";
 
 $cuerpo = "<head><style>
