@@ -1,0 +1,78 @@
+{
+    "_id": null,
+    "_nombre": "10465785531-03-B001-00008900",
+    "_generado": "2026-10-08 10:48:55",
+    "_ambiente": "beta",
+    "emisor": {
+        "ruc": "10465785531",
+        "razon_social": "DICK MARLON TAMANI ROMAYNA",
+        "direccion": "PSJE. 7 DE JUNIO NRO 303",
+        "ubigeo": "150101"
+    },
+    "cliente": {
+        "razon_social": "CLIENTES VARIOS",
+        "numero_doc": "00000000",
+        "tipo_doc": "1",
+        "direccion": "-"
+    },
+    "comprobante": {
+        "tipo_doc": "03",
+        "serie": "B001",
+        "correlativo": 8900,
+        "fecha_emision": "2026-10-08",
+        "moneda": "PEN",
+        "condicion_pago": "CONTADO",
+        "observaciones": "",
+        "documento_referencia": "",
+        "nota_motivo": "",
+        "nota_sustento": ""
+    },
+    "totales": {
+        "subtotal_gravado": 0,
+        "subtotal_exonerado": 33.5,
+        "subtotal_inafecto": 0,
+        "subtotal_gratuito": 0,
+        "descuento_global": 0,
+        "igv_total": 0,
+        "total": 33.5,
+        "igv_porcentaje": 18
+    },
+    "items": [
+        {
+            "descripcion": "CLONAZEPAM 2 MG x 100 Tableta Recubierta",
+            "codigo_producto": "",
+            "unidad_medida": "NIU",
+            "cantidad": 10,
+            "precio_unitario": 0.5,
+            "precio_con_igv": 0.5,
+            "igv_tipo": "20",
+            "valor_venta": 5,
+            "igv_monto": 0,
+            "total_item": 0
+        },
+        {
+            "descripcion": "SILDEN UP 100 MG X 50 TABLETAS",
+            "codigo_producto": "",
+            "unidad_medida": "NIU",
+            "cantidad": 1,
+            "precio_unitario": 7,
+            "precio_con_igv": 7,
+            "igv_tipo": "20",
+            "valor_venta": 7,
+            "igv_monto": 0,
+            "total_item": 0
+        },
+        {
+            "descripcion": "VICK 44 JARABE frasco x 120 ml",
+            "codigo_producto": "",
+            "unidad_medida": "NIU",
+            "cantidad": 1,
+            "precio_unitario": 21.5,
+            "precio_con_igv": 21.5,
+            "igv_tipo": "20",
+            "valor_venta": 21.5,
+            "igv_monto": 0,
+            "total_item": 0
+        }
+    ]
+}

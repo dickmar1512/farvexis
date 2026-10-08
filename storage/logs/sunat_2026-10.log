@@ -5,3 +5,24 @@
 [2026-10-01 22:14:54] ENVIO: 10465785531-01-F001-00000014.zip creado
 [2026-10-01 22:14:54] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-01-F001-00000014.zip)
 [2026-10-01 22:14:54] ERROR [10465785531-01-F001-00000014]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-10-08 10:14:48] PARSE: 10432470330-03-B001-00008900.xml generado
+[2026-10-08 10:14:48] DATA: 10432470330-03-B001-00008900.json generado
+[2026-10-08 10:14:48] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-10-08 10:14:48] FIRMA: 10432470330-03-B001-00008900.xml firmado
+[2026-10-08 10:14:48] ENVIO: 10432470330-03-B001-00008900.zip creado
+[2026-10-08 10:14:48] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10432470330-03-B001-00008900.zip)
+[2026-10-08 10:14:48] ERROR [10432470330-03-B001-00008900]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-10-08 10:48:55] PARSE: 10465785531-03-B001-00008900.xml generado
+[2026-10-08 10:48:55] DATA: 10465785531-03-B001-00008900.json generado
+[2026-10-08 10:48:55] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-10-08 10:48:55] FIRMA: 10465785531-03-B001-00008900.xml firmado
+[2026-10-08 10:48:55] ENVIO: 10465785531-03-B001-00008900.zip creado
+[2026-10-08 10:48:55] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00008900.zip)
+[2026-10-08 10:48:56] ERROR [10465785531-03-B001-00008900]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
+[2026-10-08 10:48:59] PARSE: 10465785531-03-B001-00008899.xml generado
+[2026-10-08 10:48:59] DATA: 10465785531-03-B001-00008899.json generado
+[2026-10-08 10:48:59] FIRMA: XML firmado exitosamente con xmlseclibs
+[2026-10-08 10:48:59] FIRMA: 10465785531-03-B001-00008899.xml firmado
+[2026-10-08 10:48:59] ENVIO: 10465785531-03-B001-00008899.zip creado
+[2026-10-08 10:48:59] SOAP: Enviando a https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService (archivo: 10465785531-03-B001-00008899.zip)
+[2026-10-08 10:48:59] ERROR [10465785531-03-B001-00008899]: SUNAT SoapFault [500]: El documento electr&#243;nico ingresado ha sido alterado - Detalle: Unsupported or unrecognized Signature signer format in the message.
