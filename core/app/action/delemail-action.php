@@ -1,8 +1,14 @@
 <?php
-if(isset($_GET["id"])){
-    $email = EmailConfigData::getById($_GET["id"]);
-    $email->del();
-    Core::alert("Correo eliminado exitosamente!");
-    print "<script>window.location='index.php?view=emails';</script>";
+header('Content-Type: application/json; charset=utf-8');
+
+if(isset($_POST["id"])){
+    try {
+        $email = EmailConfigData::getById($_POST["id"]);
+        $email->del();
+        
+        echo json_encode(["status" => "success", "message" => "Correo eliminado exitosamente!"]);
+    } catch (Exception $e) {
+        echo json_encode(["status" => "error", "message" => "Error al eliminar: " . $e->getMessage()]);
+    }
 }
 ?>

@@ -76,7 +76,7 @@
                                                 data-type="<?php echo $email->type; ?>"
                                                 data-active="<?php echo $email->is_active; ?>"
                                                 data-toggle="modal" data-target="#emailModal"><i class="fas fa-edit"></i></a>
-											<a href="index.php?action=delemail&id=<?php echo $email->id; ?>" class="btn btn-danger btn-xs" onclick="return confirm('¿Está seguro de eliminar este correo?');"><i class="fas fa-trash"></i></a>
+											<a href="#" class="btn btn-danger btn-xs delete-email" data-id="<?php echo $email->id; ?>"><i class="fas fa-trash"></i></a>
 										</td>
 									</tr>
 									<?php
@@ -97,7 +97,7 @@
 <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="index.php?action=saveemail" method="POST">
+      <form id="emailForm" action="index.php?action=saveemail" method="POST">
       <div class="modal-header">
         <h5 class="modal-title" id="emailModalLabel">Configurar Correo</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -145,12 +145,78 @@ document.addEventListener("DOMContentLoaded", function() {
         $('#email_active').val('1');
     });
 
-    $('.edit-email').click(function(){
+    $('.edit-email').click(function(e){
+        e.preventDefault();
         $('#emailModalLabel').text('Editar Correo');
         $('#email_id').val($(this).data('id'));
         $('#email_address').val($(this).data('email'));
         $('#email_type').val($(this).data('type'));
         $('#email_active').val($(this).data('active'));
+    });
+
+    $('#emailForm').submit(function(e) {
+        e.preventDefault();
+        var form = $(this);
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.status === 'success') {
+                    $('#emailModal').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: response.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire('Error', response.message, 'error');
+                }
+            },
+            error: function() {
+                Swal.fire('Error', 'Ocurrió un error inesperado al procesar la solicitud.', 'error');
+            }
+        });
+    });
+
+    $('.delete-email').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('id');
+        Swal.fire({
+            title: '¿Está seguro?',
+            text: "El correo será eliminado del sistema.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.post('index.php?action=delemail', { id: id }, function(response) {
+                    if (response.status === 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: '¡Eliminado!',
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire('Error', response.message, 'error');
+                    }
+                }, 'json').fail(function() {
+                    Swal.fire('Error', 'No se pudo completar la eliminación.', 'error');
+                });
+            }
+        });
     });
 });
 </script>
